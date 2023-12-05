@@ -1,0 +1,20 @@
+{
+  "name": "zadaca1",
+  "version": "1.0.0",
+  "description": "zadaca1",
+  "main": "server.mjs",
+  "scripts": {
+    "pripremi": "npm link --save express sqlite3 express-session cookie-parser jsonwebtoken nodemailer",
+    "debug": "nodemon server.mjs mmarkovin21_conf.csv",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.mjs mmarkovin21_conf.csv"
+  },
+  "author": "Magdalena Marovinovic",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "file:../../../../../usr/lib/node_modules/cookie-parser",
+    "express": "file:../../../../../usr/lib/node_modules/express",
+    "express-session": "file:../../../../../usr/lib/node_modules/express-session",
+    "sqlite3": "file:../../../../../usr/lib/node_modules/sqlite3"
+  }
+}

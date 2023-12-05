@@ -1,0 +1,168 @@
+/**********************************************************************/
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #154c79;
+    color: white;
+}
+header{
+    margin: 7rem 2rem 4rem;
+}
+main{
+    margin: 2rem 2rem;
+    padding: 3rem 0;
+}
+a{
+    color: white;
+    margin: 5px;
+}
+table{
+    width: 80%;
+    border-collapse: collapse;
+}
+table, th, tr, td{
+    border-bottom: 0.5px solid gray;
+    padding: 0.5rem;
+    margin: 0 auto;
+
+}
+h1,h2,h3{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+p{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+tr:nth-child(even) {
+    background-color: #07226b;
+  }
+  img{
+    justify-content: center;
+  }
+/*************************ZAJEDNIČKO***********************************/
+.slikaHTML{
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    text-align: center;
+}
+/*************************Navigacija***********************************/
+nav{
+    padding: 2rem 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#07226b ;
+}
+nav div{
+    position: relative;
+    width: 40%;
+    margin: 0 auto;
+}
+.nav-link{
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+#prijvaOdjava{
+    width: 20rem;
+    position: fixed;
+    top: 2rem;
+    right: 0;
+}
+/*************************Podnožje***********************************/
+
+.validatori{
+    display: flex;
+    justify-content: center;
+}
+.copy{
+    position: relative;
+}
+footer{
+    text-align: center;
+    position: relative;
+    background-color:#07226b ;
+    padding: 20px 0;
+}
+/*********************************Početna*************************************/
+
+/*********************************Prijava i registracija forme*************************************/
+form {
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  input[type="radio"]{
+    width: 1rem;
+    margin-left: 2rem;
+  }
+  .radio{
+    width: 20%;
+    display: inline-block;
+  }
+  .obavezno{
+    color: red;
+    display: none;
+  }
+  button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+/***************************SerijeDetalji**********************************/
+.poster{
+    width: 30%;
+}
+.opis{
+    margin-right: 2rem;
+}
+#vanjskaStranica{
+    margin: 0 auto;
+    text-align: center;
+}
+/*********************************Korisnici*************************************/
+.korisnikImePrezime{
+    display: inline-block;
+}
+.korisnikOstalo{
+    display: inline-block;
+}
+.jedanKorisnik{
+    display: block;
+}
+/*****************************Favoriti*******************************/
+
+/**************************Dokumentacija**********************************/
+#era{
+    width: 30%;
+    height: 30%;
+}

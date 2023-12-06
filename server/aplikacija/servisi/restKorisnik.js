@@ -1,7 +1,7 @@
 const KorisnikDAO = require("./korisnikDAO.js");
-const Konfiguracija = require("../konfiguracija.js");
-const kodovi = require("../aplikacija/moduli/kodovi.js");
-const jwt = require("../aplikacija/moduli/jwt.js");
+const Konfiguracija = require("../../konfiguracija.js");
+const kodovi = require("../../../aplikacija/moduli/kodovi.js");
+const jwt = require("../../../aplikacija/moduli/jwt.js");
 
 exports.getKorisnici = function (zahtjev, odgovor) {
 	odgovor.type("application/json");

@@ -1,144 +1,144 @@
 
-    <header><h1>Dokumentacija</h1></header>
-    <nav>#navigacija#</nav>
-    <main>
-        <div id="ListaPodatci">
-            <img src="/slike/autor.jpg" alt="slikaLica">
-            <ul>
-                <li>Magdalena Markovinović</li>
-                <li>E-mail: <a href="mailto:mmarkovin21@foi.hr">mmarkovin21foi.hr</a></li>
-            </ul>
-            <a href="/dokumentacijaDir/era_ispravljeno.png">
-                <img id="era" src="/dokumentacijaDir/era_ispravljeno.png" alt="era model">
-            </a>
-        </div>
-        <div id="tablica2">
-            <h2>Tablica 2.</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Resurs <br> parametri</th>
-                        <th scope="col">GET <br> čitanje</th>
-                        <th scope="col">POST <br> kreiranje</th>
-                        <th scope="col">PUT <br> ažuriranje</th>
-                        <th scope="col">DELETE <br> brisanje</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>baza/korisnici </td>
-                        <td>Napravljeno<br> Nedostaje administratorsko pravo</td>
-                        <td>Kreira korisnika <br> Nedostaje administratorsko pravo </td>
-                        <td>Napravljeno(501) </td>
-                        <td>Napravljeno(501) </td>
-                    </tr>
-                    <tr>
-                        <td>baza/korisnici/{{ "{korime}" }} </td>
-                        <td>Vraća podatke određenog korisnika</td>
-                        <td>Napravljeno ("zabranjeno 405")</td>
-                        <td>Napravljeno (ažurira korisnika) </td>
-                        <td>Napravljeno (briše korisnika)</td>
-                    </tr>
-                    <tr>
-                        <td>baza/korisnici/{{ "{korime}" }}/prijava </td>
-                        <td>Napravljeno</td>
-                        <td>Napravljeno</td>
-                        <td>Napravljeno(501) </td>
-                        <td>Napravljeno(501) </td>
-                    </tr>
-                    <tr>
-                        <td>baza/favoriti </td>
-                        <td> Vraća sve serije<br> Nedostaje prijavljeni korisnik</td>
-                        <td> Dodaje seriju u tablicu favoriti<br> Nedostaje prijavljeni korisnik</td>
-                        <td>Napravljeno(501) </td>
-                        <td>Napravljeno(501) </td>
-                    </tr>
-                    <tr>
-                        <td>baza/favoriti/{{ "{id}" }} </td>
-                        <td>Vraća podatke jedne serije<br> Nedostaje prijavljeni korisnik</td>
-                        <td>Napravljeno("zabranjeno 405")</td>
-                        <td>Napravljeno("zabranjeno 405") </td>
-                        <td> Briše korisnika <br> Nedostaje prijavljeni korisnik</td>
-                    </tr>
-                    <tr>
-                        <td>baza/dnevnik </td>
-                        <td></td>
-                        <td>Napravljeno(501)</td>
-                        <td>Napravljeno(501) </td>
-                        <td>Napravljeno(501)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="tablica3">
-            <h2>Tablica 3.</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Uloga</th>
-                        <th scope="col">Stranica/e</th>
-                        <th scope="col">Opis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Gost/Korisnik</td>
-                        <td>SerijaDetalji</td>
-                        <td>Napravljeno <br> Ne radi spremanje favorita u bazu</td>
-                    </tr>
-                    <tr>
-                        <td>Gost</td>
-                        <td>Dokumentacija</td>
-                        <td>Napravljeno</td>
-                    </tr>
-                    <tr>
-                        <td>Gost</td>
-                        <td>Prijava/Odjava</td>
-                        <td>Napravljeno</td>
-                    </tr>
-                    <tr>
-                        <td>Korisnik</td>
-                        <td>Profil</td>
-                        <td>Napravljeno</td>
-                    </tr>
-                    <tr>
-                        <td>Korisnik</td>
-                        <td>Favoriti</td>
-                        <td>Samo prikazivanje html stranice(dummy data)</td>
-                    </tr>
-                    <tr>
-                        <td>Korisnik</td>
-                        <td>FavoritiDetalji</td>
-                        <td>Samo prikazivanje html stranice(dummy data)</td>
-                    </tr>
-                    <tr>
-                        <td>Admin</td>
-                        <td>Registracija</td>
-                        <td>Prikazuje se stranica i može se registrirati korisnik. <br>
-                        Lozinka se sprema u bazu u hash obliku sa sol-om.
-                        Slanje E-maila ne funkcionira.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Admin</td>
-                        <td>Korisnici</td>
-                        <td>Napravljeno</td>
-                    </tr>
-                    <tr>
-                        <td>Admin</td>
-                        <td>Dnevnik</td>
-                        <td>Samo prikazivanje html stranice(dummy data)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-    <footer>
-        <div class="validatori">
-            <a href="https://validator.w3.org"><img class="slikaHTML" src="/slike/HTML5.png" alt="html-png"></a>
-            <a href="https://validator.w3.org"><img class="slikaHTML" src="/slike/CSS3.png" alt="css-png"></a>
-        </div>
-        <div class="copy">
-           2023 &copy; Magdalena Markovinović
-        </div>
-    </footer>
+<header><h1>Dokumentacija</h1></header>
+<nav>#navigacija#</nav>
+<main>
+    <div id="ListaPodatci">
+        <img src="/slike/autor.jpg" alt="slikaLica">
+        <ul>
+            <li>Magdalena Markovinović</li>
+            <li>E-mail: <a href="mailto:mmarkovin21@foi.hr">mmarkovin21foi.hr</a></li>
+        </ul>
+        <a href="/dokumentacijaDir/era_ispravljeno.png">
+            <img id="era" src="/dokumentacijaDir/era_ispravljeno.png" alt="era model">
+        </a>
+    </div>
+    <div id="tablica2">
+        <h2>Tablica 2.</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Resurs <br> parametri</th>
+                    <th scope="col">GET <br> čitanje</th>
+                    <th scope="col">POST <br> kreiranje</th>
+                    <th scope="col">PUT <br> ažuriranje</th>
+                    <th scope="col">DELETE <br> brisanje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>baza/korisnici </td>
+                    <td>Napravljeno<br> Nedostaje administratorsko pravo</td>
+                    <td>Kreira korisnika <br> Nedostaje administratorsko pravo </td>
+                    <td>Napravljeno(501) </td>
+                    <td>Napravljeno(501) </td>
+                </tr>
+                <tr>
+                    <td>baza/korisnici/{{ "{korime}" }} </td>
+                    <td>Vraća podatke određenog korisnika</td>
+                    <td>Napravljeno ("zabranjeno 405")</td>
+                    <td>Napravljeno (ažurira korisnika) </td>
+                    <td>Napravljeno (briše korisnika)</td>
+                </tr>
+                <tr>
+                    <td>baza/korisnici/{{ "{korime}" }}/prijava </td>
+                    <td>Napravljeno</td>
+                    <td>Napravljeno</td>
+                    <td>Napravljeno(501) </td>
+                    <td>Napravljeno(501) </td>
+                </tr>
+                <tr>
+                    <td>baza/favoriti </td>
+                    <td> Vraća sve serije<br> Nedostaje prijavljeni korisnik</td>
+                    <td> Dodaje seriju u tablicu favoriti<br> Nedostaje prijavljeni korisnik</td>
+                    <td>Napravljeno(501) </td>
+                    <td>Napravljeno(501) </td>
+                </tr>
+                <tr>
+                    <td>baza/favoriti/{{ "{id}" }} </td>
+                    <td>Vraća podatke jedne serije<br> Nedostaje prijavljeni korisnik</td>
+                    <td>Napravljeno("zabranjeno 405")</td>
+                    <td>Napravljeno("zabranjeno 405") </td>
+                    <td> Briše korisnika <br> Nedostaje prijavljeni korisnik</td>
+                </tr>
+                <tr>
+                    <td>baza/dnevnik </td>
+                    <td></td>
+                    <td>Napravljeno(501)</td>
+                    <td>Napravljeno(501) </td>
+                    <td>Napravljeno(501)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="tablica3">
+        <h2>Tablica 3.</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Uloga</th>
+                    <th scope="col">Stranica/e</th>
+                    <th scope="col">Opis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gost/Korisnik</td>
+                    <td>SerijaDetalji</td>
+                    <td>Napravljeno <br> Ne radi spremanje favorita u bazu</td>
+                </tr>
+                <tr>
+                    <td>Gost</td>
+                    <td>Dokumentacija</td>
+                    <td>Napravljeno</td>
+                </tr>
+                <tr>
+                    <td>Gost</td>
+                    <td>Prijava/Odjava</td>
+                    <td>Napravljeno</td>
+                </tr>
+                <tr>
+                    <td>Korisnik</td>
+                    <td>Profil</td>
+                    <td>Napravljeno</td>
+                </tr>
+                <tr>
+                    <td>Korisnik</td>
+                    <td>Favoriti</td>
+                    <td>Samo prikazivanje html stranice(dummy data)</td>
+                </tr>
+                <tr>
+                    <td>Korisnik</td>
+                    <td>FavoritiDetalji</td>
+                    <td>Samo prikazivanje html stranice(dummy data)</td>
+                </tr>
+                <tr>
+                    <td>Admin</td>
+                    <td>Registracija</td>
+                    <td>Prikazuje se stranica i može se registrirati korisnik. <br>
+                    Lozinka se sprema u bazu u hash obliku sa sol-om.
+                    Slanje E-maila ne funkcionira.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Admin</td>
+                    <td>Korisnici</td>
+                    <td>Napravljeno</td>
+                </tr>
+                <tr>
+                    <td>Admin</td>
+                    <td>Dnevnik</td>
+                    <td>Samo prikazivanje html stranice(dummy data)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer>
+    <div class="validatori">
+        <a href="https://validator.w3.org"><img class="slikaHTML" src="/slike/HTML5.png" alt="html-png"></a>
+        <a href="https://validator.w3.org"><img class="slikaHTML" src="/slike/CSS3.png" alt="css-png"></a>
+    </div>
+    <div class="copy">
+        2023 &copy; Magdalena Markovinović
+    </div>
+</footer>

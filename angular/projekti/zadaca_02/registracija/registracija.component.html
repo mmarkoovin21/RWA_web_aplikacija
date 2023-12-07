@@ -1,0 +1,42 @@
+<header>
+    <h1>Registracija</h1>
+</header>
+<nav><app-navigacija></app-navigacija></nav>
+<main>
+    <div id="poruka">#poruka#</div>
+    <form action="#" method="POST" id="formaRegistracija">
+        <label for="ime">Ime</label>
+        <input type="text" name="ime" id="ime" >
+        <br>
+        <label for="prezime">Prezime</label>
+        <input type="text" name="prezime" id="prezime" >
+        <br>
+        <label for="adresa">Adresa</label>
+        <input type="text" name="adresa" id="adresa">
+        <br>
+        <div>
+            <input type="radio" name="spol" id="musko" value="Muško">
+            <label class="radio" for="musko">Muško</label>
+            <input type="radio" name="spol" id="zensko" value="Žensko">
+            <label class="radio" for="zensko">Žensko</label>
+        </div>
+        <br>
+        <label for="zvanje">Zvanje</label>
+        <input type="text" name="zvanje" id="zvanje">
+        <br>
+        <label class="obavezno" for="lozinka">Obavezno</label>
+        <label for="lozinka">Lozinka</label>
+        <input type="password" name="lozinka" id="lozinka" >
+        <br>
+        <label class="obavezno" for="email">Obavezno</label>
+        <label for="email">email</label>
+        <input type="email" name="email" id="email" >
+        <br>
+        <label class="obavezno" for="korime">Obavezno</label>
+        <label for="korime">Korisničko ime</label>
+        <input type="text" name="korime" id="korime" >
+        <br>
+        <button type="submit">Registracija</button>
+    </form>
+</main>
+<footer><app-podnozje></app-podnozje></footer>

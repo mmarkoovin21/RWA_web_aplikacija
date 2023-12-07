@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokumentacija</title>
-    <link rel="stylesheet" href="/css">
-</head>
-<body>
+
     <header><h1>Dokumentacija</h1></header>
     <nav>#navigacija#</nav>
     <main>
@@ -41,14 +33,14 @@
                         <td>Napravljeno(501) </td>
                     </tr>
                     <tr>
-                        <td>baza/korisnici/{korime} </td>
+                        <td>baza/korisnici/{{ "{korime}" }} </td>
                         <td>Vraća podatke određenog korisnika</td>
                         <td>Napravljeno ("zabranjeno 405")</td>
                         <td>Napravljeno (ažurira korisnika) </td>
                         <td>Napravljeno (briše korisnika)</td>
                     </tr>
                     <tr>
-                        <td>baza/korisnici/{korime}/prijava </td>
+                        <td>baza/korisnici/{{ "{korime}" }}/prijava </td>
                         <td>Napravljeno</td>
                         <td>Napravljeno</td>
                         <td>Napravljeno(501) </td>
@@ -62,7 +54,7 @@
                         <td>Napravljeno(501) </td>
                     </tr>
                     <tr>
-                        <td>baza/favoriti/{id} </td>
+                        <td>baza/favoriti/{{ "{id}" }} </td>
                         <td>Vraća podatke jedne serije<br> Nedostaje prijavljeni korisnik</td>
                         <td>Napravljeno("zabranjeno 405")</td>
                         <td>Napravljeno("zabranjeno 405") </td>
@@ -150,5 +142,3 @@
            2023 &copy; Magdalena Markovinović
         </div>
     </footer>
-</body>
-</html>

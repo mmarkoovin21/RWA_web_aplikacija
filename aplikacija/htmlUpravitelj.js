@@ -76,7 +76,7 @@ function ucitajHTML(htmlStranica) {
 	return ds.readFile(__dirname + "/html/" + htmlStranica + ".html", "UTF-8");
 }
 async function ucitajDokumentaciju(htmlDokumentacije) {
-	let stranice = [ds.readFile(__dirname + "../dokumentacija/dokumentacija.html", "UTF-8")
+	let stranice = [ds.readFile("../server/dokumentacija/dokumentacija.html", "UTF-8")
 	, ucitajHTML("navigacija")];
 	let [stranica, nav, footer] = await Promise.all(stranice);
 	stranica = stranica.replace("#navigacija#", nav);

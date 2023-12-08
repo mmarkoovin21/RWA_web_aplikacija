@@ -1,3 +1,5 @@
+let poruka = document.getElementById("poruka");
+
 document.addEventListener("DOMContentLoaded", async () => {
     dajKorisnike();
 });

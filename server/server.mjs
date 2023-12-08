@@ -50,13 +50,13 @@ function pokreniServer(){
 	pripremiPutanjuDokumentacija();
 	pripremiPutanjeTMDB();
 
-	server.all("*", (zahtjev, odgovor, nastavi) => {
-		if(zahtjev.session.korime == null){
-			odgovor.redirect("/prijava");
-		}else{
-			nastavi();
-		}
-	});
+	// server.all("*", (zahtjev, odgovor, nastavi) => {
+	// 	if(zahtjev.session.korime == null){
+	// 		odgovor.redirect("/prijava");
+	// 	}else{
+	// 		nastavi();
+	// 	}
+	// });
 
 	pripremiPutanjeRegistracija();
 	pripremiPutanjeStranica();

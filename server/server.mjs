@@ -39,7 +39,7 @@ function pokreniServer(){
 			resave: false,
 		})
 	);
-	server.use("/js", express.static("aplikacija/js"));
+	server.use("/js", express.static("../aplikacija/js"));
 	server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
 	server.use("/slike", express.static("dokumenti/slike"));
 	server.use("/dokumentacijaDir", express.static("dokumentacija"));

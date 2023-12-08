@@ -3,7 +3,7 @@ const Baza = require("./baza.js");
 class KorisnikDAO {
 
 	constructor() {
-		this.baza = new Baza("./dokumentacija/RWA2023mmarkovin21.sqlite");
+		this.baza = new Baza("./RWA2023mmarkovin21.sqlite");
 	}
 
 	dajSve = async function () {

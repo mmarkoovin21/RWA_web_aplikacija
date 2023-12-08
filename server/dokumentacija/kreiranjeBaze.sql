@@ -110,3 +110,6 @@ DELETE From Serije;
 DELETE From Korisnici WHERE korIme="placic";
 
 SELECT * FROM Serije WHERE idSerije IN (SELECT Serije_idSerije FROM Favoriti WHERE Serije_idSerije=2);
+
+SELECT name FROM sqlite_master WHERE type='table';
+

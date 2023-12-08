@@ -123,6 +123,7 @@ function pripremiPutanjePocetna() {
 function pripremiPutanjePretrazivanjeSerija() {
 	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
 	server.get("/serijaDetalji/:id",htmlUpravitelj.serijaDetalji.bind(htmlUpravitelj));
+	server.get("/favoritiDetalji/:id",htmlUpravitelj.favoritiDetalji.bind(htmlUpravitelj));
 }
 function pripremiPutanjeRegistracija(){
 	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);

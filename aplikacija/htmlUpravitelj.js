@@ -42,7 +42,9 @@ class HtmlUpravitelj {
 		odgovor.send(stranica);
 	};
 	favoritiDetalji = async function (zahtjev, odgovor) {
+		let id = zahtjev.params.id;
 		let stranica = await ucitajStranicu("favoritiDetalji");
+		stranica = stranica.replace("#idSerije#", id);
 		odgovor.send(stranica);
 	};
 	serijaDetalji = async function (zahtjev, odgovor) {

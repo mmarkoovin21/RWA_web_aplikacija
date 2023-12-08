@@ -17,7 +17,7 @@ async function dajFavorite() { // bila je odana stranica kao argument
 		console.log(podaci);
 
 		prikaziFavorite(podaci);
-		//prikaziStranicenje(podaci.page, podaci.total_pages, "dajSerije");
+		//prikaziStranicenje(podaci.page, podaci.total_pages, "dajFavorite");
 	}else if (odgovor.status == 401) {
 		document.getElementById("sadrzaj").innerHTML = "";
 		poruka.innerHTML = "Neautorizirani pristup! Prijavite se!";

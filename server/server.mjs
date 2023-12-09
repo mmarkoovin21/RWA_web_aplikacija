@@ -6,6 +6,7 @@ import portovi from "/var/www/RWA/2023/portovi.js";
 import restKorisnik from "./aplikacija/servisi/restKorisnik.js";
 import restDnevnik from "./aplikacija/servisi/restDnevnik.js";
 import restFavoriti from "./aplikacija/servisi/restFavoriti.js";
+import restSezone from "./aplikacija/servisi/restSezone.js"
 import RestTMDB from "./aplikacija/servisi/restTMDB.js";
 const port = portovi.mmarkovin21;
 import kolacici from 'cookie-parser';
@@ -63,6 +64,7 @@ function pokreniServer(){
 
 	pripremiPutanjeKorisnik();
 	pripremiPutanjeFavoriti();
+	pripremiPutanjeSezone
 	pripremiPutanjeDnevnik();
 
     server.use((zahtjev, odgovor) => {
@@ -101,6 +103,10 @@ function pripremiPutanjeFavoriti(){
 	server.delete("/baza/favoriti", restFavoriti.deleteFavoriti);
 	server.put("/baza/favoriti", restFavoriti.putFavoriti);
 
+}
+function pripremiPutanjeSezone(){
+	server.get("/baza/sezone/:id", restSezone.getSezone);
+	// server.post("/baza/sezone/:id", restSezone.);  još nije izrealizirano
 }
 function pripremiPutanjeDnevnik(){
 

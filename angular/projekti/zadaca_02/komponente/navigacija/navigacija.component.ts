@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { DokumentacijaComponent } from '../dokumentacija/dokumentacija.component';
 
 @Component({
   selector: 'app-navigacija',
   standalone: true,
-  imports: [DokumentacijaComponent],
+  imports: [],
   templateUrl: './navigacija.component.html',
   styleUrl: './navigacija.component.scss'
 })

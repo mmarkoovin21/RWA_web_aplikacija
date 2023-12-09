@@ -37,11 +37,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/zadaca_02",
+            "outputPath": "../server/angular",
             "index": "projekti/zadaca_02/src/index.html",
-            "browser": "projekti/zadaca_02/src/main.ts",
+            "main": "projekti/zadaca_02/src/main.ts",
             "polyfills": [
               "zone.js"
             ],

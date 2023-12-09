@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import Konfiguracija from "./konfiguracija.js";
 import HtmlUpravitelj from '../aplikacija/htmlUpravitelj.js';
 import FetchUpravitelj from '../aplikacija/fetchUpravitelj.js';
@@ -43,13 +44,17 @@ function pokreniServer(){
 	server.use("/js", express.static("../aplikacija/js"));
 	server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
 	server.use("/slike", express.static("dokumenti/slike"));
-	server.use("/dokumentacijaDir", express.static("dokumentacija"));
+	// server.use("/dokumentacijaDir", express.static("dokumentacija"));
+	server.use(express.static("angular/"));
+	server.get("*", (zahtjev, odgovor) => {
+		odgovor.sendFile(path.resolve() + "/angular/");
+	});
 
-	pripremiPutanjePocetna();
-	pripremiPutanjeAutentifikacija();
-	pripremiPutanjePretrazivanjeSerija();
-	pripremiPutanjuDokumentacija();
-	pripremiPutanjeTMDB();
+	// pripremiPutanjePocetna();
+	// pripremiPutanjeAutentifikacija();
+	// pripremiPutanjePretrazivanjeSerija();
+	// // pripremiPutanjuDokumentacija();
+	// pripremiPutanjeTMDB();
 
 	// server.all("*", (zahtjev, odgovor, nastavi) => {
 	// 	if(zahtjev.session.korime == null){
@@ -59,13 +64,13 @@ function pokreniServer(){
 	// 	}
 	// });
 
-	pripremiPutanjeRegistracija();
-	pripremiPutanjeStranica();
+	// pripremiPutanjeRegistracija();
+	// pripremiPutanjeStranica();
 
-	pripremiPutanjeKorisnik();
-	pripremiPutanjeFavoriti();
-	pripremiPutanjeSezone
-	pripremiPutanjeDnevnik();
+	// pripremiPutanjeKorisnik();
+	// pripremiPutanjeFavoriti();
+	// pripremiPutanjeSezone
+	// pripremiPutanjeDnevnik();
 
     server.use((zahtjev, odgovor) => {
 		odgovor.status(404);

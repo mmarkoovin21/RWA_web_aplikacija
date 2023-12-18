@@ -70,7 +70,13 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "projekti/zadaca_02/src/environments/environment.ts",
+                  "with": "projekti/zadaca_02/src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,

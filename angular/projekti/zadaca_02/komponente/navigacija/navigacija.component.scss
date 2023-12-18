@@ -1,0 +1,25 @@
+nav{
+    padding: 2rem 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#07226b ;
+}
+nav div{
+    position: relative;
+    width: 40%;
+    margin: 0 auto;
+}
+.nav-link{
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+#prijvaOdjava{
+    width: 20rem;
+    position: fixed;
+    top: 2rem;
+    right: 0;
+}

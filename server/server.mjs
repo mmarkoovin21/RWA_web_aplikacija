@@ -43,7 +43,6 @@ function pokreniServer(){
 	);
 	server.use("/js", express.static("../aplikacija/js"));
 	server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
-	server.use("/slike", express.static("dokumenti/slike"));
 	// server.use("/dokumentacijaDir", express.static("dokumentacija"));
 	server.use(express.static("angular/"));
 	server.get("*", (zahtjev, odgovor) => {

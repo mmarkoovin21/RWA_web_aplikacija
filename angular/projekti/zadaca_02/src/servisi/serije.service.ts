@@ -1,41 +1,62 @@
 import { Injectable } from '@angular/core';
-import { ISerijeTmdb } from '../interfaces/ISerijaTmdb';
+import { ISerijaTmdb, ISerijeTmdb } from '../interfaces/ISerijaTmdb';
+import { ISerije } from '../interfaces/ISerije';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SerijeService {
-  restServis?: string;
-  serijeTMDB?: ISerijeTmdb;
-
-  constructor() { }
-  async osvjeziSerije(stranica:number,kljucnaRijec:string){
-    let parametri = "?stranica="+stranica+"&kljucnaRijec="+kljucnaRijec;
-    let o = (await fetch(this.restServis + "/tmdb/serije" + parametri)) as Response;
-      if(o.status == 200){
-        let r = JSON.parse(await o.text()) as ISerijeTmdb;
-        console.log(r);
-        this.serijeTMDB = r;
-      }
+  private restServis = environment.restServis;
+  private serijeTMDB? : ISerijeTmdb;
+  private serije = new Array<ISerije>();
+  constructor() {
+    // let serije = localStorage.getItem('serije');
+    // if (serije != null) this.serijeTMDB = JSON.parse(serije);
+    // else this.osvjeziFilmove(1, 'the');
+  }
+  async osvjeziFilmove(stranica: number, kljucnaRijec: string) {
+    let parametri = '?stranica=' + stranica + '&trazi=' + kljucnaRijec;
+    let o = (await fetch(
+      this.restServis + 'tmdb/serije' + parametri
+    )) as Response;
+    if (o.status == 200) {
+      let r = JSON.parse(await o.text()) as ISerijeTmdb;
+      console.log(r);
+      this.serijeTMDB = r;
+      //localStorage.setItem('serije', JSON.stringify(r));
+    }
   }
 
-  dajSerije():Array<ISerija>{
-    if(this.filmovi.length == 0){
-    if(this.filmoviTMDB == undefined){
-    return new Array<FilmoviI>();
-    } else if(this.filmoviTMDB.results.length==0){
-    return new Array<FilmoviI>();
+  dajFilmove(): Array<ISerije> {
+    if (this.serije.length == 0) {
+      if (this.serijeTMDB == undefined) {
+        return new Array<ISerije>();
+      } else if (this.serijeTMDB.results.length == 0) {
+        return new Array<ISerije>();
+      } else {
+        this.serije = new Array<ISerije>();
+        for (let serijaTMDB of this.serijeTMDB.results) {
+          let serija: ISerije = {
+            naziv: serijaTMDB.original_name,
+            opis: serijaTMDB.overview,
+          };
+          this.serije.push(serija);
+        }
+        return this.serije;
+      }
     } else {
-    this.filmovi = new Array<FilmoviI>();
-    for(let filmTMDB of this.filmoviTMDB.results){
-    let film:FilmoviI = {naziv: filmTMDB.original_title
-    ,opis:filmTMDB.overview};
-    this.filmovi.push(film);
+      return this.serije;
     }
-    return this.filmovi;
+  }
+  dajSeriju(naziv: String): ISerijaTmdb| null {
+    if (this.serijeTMDB == undefined) return null;
+    if (this.serijeTMDB.results.length == 0) return null;
+    for (let serija of this.serijeTMDB.results) {
+      if (serija.original_name == naziv) {
+        return serija;
+      }
     }
-    } else {
-    return this.filmovi;
-    }
-    }
+    return null;
+  }
 }

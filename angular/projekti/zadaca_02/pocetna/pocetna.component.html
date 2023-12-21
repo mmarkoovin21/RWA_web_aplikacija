@@ -4,8 +4,25 @@
 <main>
     <div id="poruka">#poruka#</div><br>
     <form action="POST">
-        <input id="pretrazivanje" type="text" placeholder="Pretraži...">
+        <input id="pretrazivanje" type="text" placeholder="Pretraži..." (keyup)="filtriraj($event)">
     </form>
-    <div id="stranicenje"></div>
-    <div id="sadrzaj"></div>
+    @if (serije.length > 0) {
+        <table>
+            <tr>
+                <th scope='col'>Naslov</th>
+                <th scope='col'>Opis</th>
+                <th></th>
+            </tr>
+            @for (s of serije; track s.id) {
+                <tr>
+                    <td>{{s.name}}</td>
+                    <td>{{s.overview}}</td>
+                    <!-- <td><a [routerLink]="['/serija-detalji', s.id]" routerLinkActive="router-link-active" >Detalji serije</a></td> -->
+                </tr>
+            }
+        </table>
+    }
+    
+    <!-- <div id="stranicenje"></div>
+    <div id="sadrzaj"></div> -->
 </main>

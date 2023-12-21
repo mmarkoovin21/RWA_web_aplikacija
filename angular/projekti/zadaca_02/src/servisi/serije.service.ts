@@ -9,54 +9,40 @@ import { environment } from '../environments/environment';
 export class SerijeService {
   private restServis = environment.restServis;
   private serijeTMDB? : ISerijeTmdb;
+  private serijaTMDB? : ISerijeTmdb;
   private serije = new Array<ISerije>();
+  
   constructor() {
-    // let serije = localStorage.getItem('serije');
-    // if (serije != null) this.serijeTMDB = JSON.parse(serije);
-    // else this.osvjeziFilmove(1, 'the');
+    
   }
-  async osvjeziFilmove(stranica: number, kljucnaRijec: string) {
+  async dohvatiSerije(stranica: number, kljucnaRijec: string): Promise<Array<ISerijaTmdb>>{
     let parametri = '?stranica=' + stranica + '&trazi=' + kljucnaRijec;
-    let o = (await fetch(
+    let odgovor = (await fetch(
       this.restServis + 'tmdb/serije' + parametri
     )) as Response;
-    if (o.status == 200) {
-      let r = JSON.parse(await o.text()) as ISerijeTmdb;
-      console.log(r);
-      this.serijeTMDB = r;
-      //localStorage.setItem('serije', JSON.stringify(r));
-    }
-  }
+    if(odgovor.status == 200){
+      let podaci = JSON.parse(await odgovor.text()) as ISerijeTmdb;
+      this.serijeTMDB = podaci;
+      console.log(podaci);
 
-  dajFilmove(): Array<ISerije> {
-    if (this.serije.length == 0) {
-      if (this.serijeTMDB == undefined) {
-        return new Array<ISerije>();
-      } else if (this.serijeTMDB.results.length == 0) {
-        return new Array<ISerije>();
-      } else {
-        this.serije = new Array<ISerije>();
-        for (let serijaTMDB of this.serijeTMDB.results) {
-          let serija: ISerije = {
-            naziv: serijaTMDB.original_name,
-            opis: serijaTMDB.overview,
-          };
-          this.serije.push(serija);
-        }
-        return this.serije;
-      }
-    } else {
-      return this.serije;
+      let dohvaceneSerije: Array<ISerijaTmdb> = [];
+    for(let s of this.serijeTMDB!.results){
+      let serija: ISerijaTmdb = { 
+        id: s.id,
+        name: s.name,
+        homepage: s.homepage,
+        number_of_episodes: s.number_of_episodes,
+        number_of_seasons: s.number_of_seasons,
+        original_name: s.original_name,
+        overview: s.overview,
+        popularity: s.popularity,
+        poster_path: s.poster_path,
+        seasons: s.seasons
+      };
+      dohvaceneSerije.push(serija);
     }
-  }
-  dajSeriju(naziv: String): ISerijaTmdb| null {
-    if (this.serijeTMDB == undefined) return null;
-    if (this.serijeTMDB.results.length == 0) return null;
-    for (let serija of this.serijeTMDB.results) {
-      if (serija.original_name == naziv) {
-        return serija;
-      }
+    return dohvaceneSerije;
     }
-    return null;
+    return [];
   }
 }

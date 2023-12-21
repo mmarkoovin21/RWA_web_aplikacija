@@ -1,4 +1,11 @@
 export interface ISerijeTmdb{
+    page: number;
+    results: Array<ISerijaTmdb>;
+    total_pages: number;
+    total_results: number;
+}
+
+export interface ISerijaTmdb{
     id: number;
     name: string;
     adult: boolean;

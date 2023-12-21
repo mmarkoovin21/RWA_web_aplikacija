@@ -12,9 +12,9 @@ import RestTMDB from "./aplikacija/servisi/restTMDB.js";
 const port = portovi.mmarkovin21;
 import kolacici from 'cookie-parser';
 import sesija from 'express-session';
+import cors from 'cors';
 
 const server = express();
-
 
 let konf = new Konfiguracija();
 konf
@@ -41,19 +41,23 @@ function pokreniServer(){
 			resave: false,
 		})
 	);
+	server.use(cors({
+		origin: ["http://localhost:4200"]
+	}));
 	server.use("/js", express.static("../aplikacija/js"));
 	server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
 	// server.use("/dokumentacijaDir", express.static("dokumentacija"));
 	server.use(express.static("angular/"));
-	server.get("*", (zahtjev, odgovor) => {
-		odgovor.sendFile(path.resolve() + "/angular/");
-	});
+	
 
 	// pripremiPutanjePocetna();
 	// pripremiPutanjeAutentifikacija();
 	// pripremiPutanjePretrazivanjeSerija();
 	// // pripremiPutanjuDokumentacija();
-	// pripremiPutanjeTMDB();
+	 pripremiPutanjeTMDB();
+	 server.get("*", (zahtjev, odgovor) => {
+		odgovor.sendFile(path.resolve() + "/angular/");
+	});
 
 	// server.all("*", (zahtjev, odgovor, nastavi) => {
 	// 	if(zahtjev.session.korime == null){

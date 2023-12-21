@@ -4,7 +4,7 @@
   "description": "zadaca1",
   "main": "server.mjs",
   "scripts": {
-    "pripremi": "npm link --save express sqlite3 express-session cookie-parser jsonwebtoken nodemailer",
+    "pripremi": "npm link --save express sqlite3 express-session cookie-parser jsonwebtoken nodemailer cors",
     "debug": "nodemon server.mjs mmarkovin21_conf.csv",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.mjs mmarkovin21_conf.csv"
@@ -13,8 +13,11 @@
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "file:../../../../../usr/lib/node_modules/cookie-parser",
+    "cors": "file:../../../../../usr/lib/node_modules/cors",
     "express": "file:../../../../../usr/lib/node_modules/express",
     "express-session": "file:../../../../../usr/lib/node_modules/express-session",
+    "jsonwebtoken": "file:../../../../../usr/lib/node_modules/jsonwebtoken",
+    "nodemailer": "file:../../../../../usr/lib/node_modules/nodemailer",
     "sqlite3": "file:../../../../../usr/lib/node_modules/sqlite3"
   }
 }

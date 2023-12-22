@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 export class SerijeService {
   private restServis = environment.restServis;
   private serijeTMDB? : ISerijeTmdb;
-  private serijaTMDB? : ISerijeTmdb;
+  private serijaTMDB? : ISerijaTmdb;
   private serije = new Array<ISerije>();
   
   constructor() {
@@ -18,14 +18,15 @@ export class SerijeService {
   async dohvatiSerije(stranica: number, kljucnaRijec: string): Promise<Array<ISerijaTmdb>>{
     let parametri = '?stranica=' + stranica + '&trazi=' + kljucnaRijec;
     let odgovor = (await fetch(
-      this.restServis + 'tmdb/serije' + parametri
+      this.restServis + '/api/tmdb/serije' + parametri
     )) as Response;
+    
     if(odgovor.status == 200){
       let podaci = JSON.parse(await odgovor.text()) as ISerijeTmdb;
       this.serijeTMDB = podaci;
-      console.log(podaci);
 
-      let dohvaceneSerije: Array<ISerijaTmdb> = [];
+    let dohvaceneSerije: Array<ISerijaTmdb> = [];
+      
     for(let s of this.serijeTMDB!.results){
       let serija: ISerijaTmdb = { 
         id: s.id,
@@ -41,8 +42,27 @@ export class SerijeService {
       };
       dohvaceneSerije.push(serija);
     }
+    
     return dohvaceneSerije;
     }
     return [];
+  }
+  
+  async dohvatiSeriju(id: number): Promise<ISerijaTmdb>{
+      let dohvacena =  (await ((await fetch(this.restServis + "/api/tmdb/serije/" + id)) as Response).json()) as ISerijaTmdb;
+
+      let serija: ISerijaTmdb = {
+        id: dohvacena.id,
+        name: dohvacena.name,
+        homepage: dohvacena.homepage,
+        number_of_episodes: dohvacena.number_of_episodes,
+        number_of_seasons: dohvacena.number_of_seasons,
+        original_name: dohvacena.original_name,
+        overview: dohvacena.overview,
+        popularity: dohvacena.popularity,
+        poster_path: environment.posteriPutanja + dohvacena.poster_path,
+        seasons: dohvacena.seasons
+      }
+      return serija;
   }
 }

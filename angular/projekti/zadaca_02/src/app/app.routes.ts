@@ -21,5 +21,5 @@ export const routes: Routes = [
     { path: 'prijava', component: PrijavaComponent},
     { path: 'profil', component: ProfilComponent},
     { path: 'registracija', component: RegistracijaComponent},
-    { path: 'serija-detalji', component: SerijaDetaljiComponent},
+    { path: 'serija-detalji/:id', component: SerijaDetaljiComponent},
 ];

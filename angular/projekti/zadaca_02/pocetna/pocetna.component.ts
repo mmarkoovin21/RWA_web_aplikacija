@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ISerije } from '../src/interfaces/ISerije';
 import { SerijeService } from '../src/servisi/serije.service';
 import { environment } from '../src/environments/environment';
 import { ISerijaTmdb } from '../src/interfaces/ISerijaTmdb';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-pocetna',
     standalone: true,
     templateUrl: './pocetna.component.html',
     styleUrl: './pocetna.component.scss',
-    imports: []
+    imports: [RouterLink]
 })
 export class PocetnaComponent {
+    @Output() idSerije = new EventEmitter<number>();
     serije = new Array<ISerijaTmdb>();
     filter: string  = ' ';
-    constructor(private serijeServis: SerijeService){}
+    constructor(
+        private serijeServis: SerijeService,
+        private router : Router
+    ){}
 
     async filtriraj(dogadaj: Event): Promise<void>{
         this.filter = (dogadaj.target as HTMLInputElement).value;
@@ -23,5 +28,8 @@ export class PocetnaComponent {
                 this.serije = serije;
             });
         }
+    }
+    posaljiId(id: number){
+        this.router.navigate(["serija-detalji", id]);
     }
 }

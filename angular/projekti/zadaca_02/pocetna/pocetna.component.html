@@ -17,12 +17,9 @@
                 <tr>
                     <td>{{s.name}}</td>
                     <td>{{s.overview}}</td>
-                    <!-- <td><a [routerLink]="['/serija-detalji', s.id]" routerLinkActive="router-link-active" >Detalji serije</a></td> -->
+                    <td><button (click)="posaljiId(s.id)">Detalji serije</button></td>
                 </tr>
             }
         </table>
     }
-    
-    <!-- <div id="stranicenje"></div>
-    <div id="sadrzaj"></div> -->
 </main>

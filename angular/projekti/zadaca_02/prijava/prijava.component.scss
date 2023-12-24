@@ -1,0 +1,74 @@
+header {
+    text-align: center;
+    color: black;
+    margin: {
+        top: 5rem
+    };
+    padding: 20px 0;
+}
+main {
+    max-width: 50%;
+    margin: 0 auto;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+
+    table {
+        margin: 0 auto;
+        width: 60%;
+        border-collapse: collapse;
+
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+    }
+
+    #poruka {
+        display: none;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    form {
+        width: 22rem;
+        margin: 20px auto 0;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            width: 20rem;
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 0 auto 10px;
+            width: 20rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+
+        button[type="button"] {
+            background-color: #333;
+            color: white;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #000;
+            }
+        }
+    }
+}

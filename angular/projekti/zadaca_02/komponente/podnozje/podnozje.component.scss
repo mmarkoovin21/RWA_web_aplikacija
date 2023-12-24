@@ -7,7 +7,10 @@
 }
 footer{
     text-align: center;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color:#07226b ;
     padding: 20px 0;
 }

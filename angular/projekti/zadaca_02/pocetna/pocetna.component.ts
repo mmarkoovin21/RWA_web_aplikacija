@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ISerije } from '../src/interfaces/ISerije';
 import { SerijeService } from '../src/servisi/serije.service';
 import { environment } from '../src/environments/environment';
 import { ISerijaTmdb } from '../src/interfaces/ISerijaTmdb';

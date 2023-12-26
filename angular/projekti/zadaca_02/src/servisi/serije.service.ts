@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ISerijaTmdb, ISerijeTmdb } from '../interfaces/ISerijaTmdb';
-import { ISerije } from '../interfaces/ISerije';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -10,7 +9,6 @@ export class SerijeService {
   private restServis = environment.restServis;
   private serijeTMDB? : ISerijeTmdb;
   private serijaTMDB? : ISerijaTmdb;
-  private serije = new Array<ISerije>();
   
   constructor() {
     

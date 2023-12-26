@@ -56,6 +56,7 @@ function pokreniServer(){
 	// // pripremiPutanjuDokumentacija();
 	 pripremiPutanjeTMDB();
 	 pripremiPutanjeFavoriti();
+	 pripremiPutanjeKorisnik();
 	 server.get("*", (zahtjev, odgovor) => {
 		odgovor.sendFile(path.resolve() + "/angular/");
 	});
@@ -70,8 +71,6 @@ function pokreniServer(){
 
 	// pripremiPutanjeRegistracija();
 	// pripremiPutanjeStranica();
-
-	// pripremiPutanjeKorisnik();
 	
 	// pripremiPutanjeSezone
 	// pripremiPutanjeDnevnik();

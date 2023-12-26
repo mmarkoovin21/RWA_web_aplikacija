@@ -2,6 +2,36 @@
     <h1>Korisnici</h1>
 </header>
 <main>
-    <div id="stranicenje"></div>
-    <div id="sadrzaj"></div>
+    <table>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">Adresa</th>
+            <th scope="col">Zvanje</th>
+            <th scope="col">Spol</th>
+            <th scope="col">Email</th>
+            <th scope="col">Korisničko ime</th>
+            <th scope="col">Lozinka</th>
+            <th scope="col">Uloga</th>
+        </tr>
+        @for (k of korisnici; track k.idKorisnika) {
+            <tr>
+                <td>{{k.idKorisnika}}</td>
+                <td>{{k.ime}}</td>
+                <td>{{k.prezime}}</td>
+                <td>{{k.adresa}}</td>
+                <td>{{k.zvanje}}</td>
+                <td>{{k.spol}}</td>
+                <td>{{k.email}}</td>
+                <td>{{k.korime}}</td>
+                <td>{{k.lozinka}}</td>
+                <td>{{k.uloge_korisnika_id}}</td>
+                <td><Button type="button" (click)="obrisiKorisnika(k.idKorisnika)">Obriši korisnika</Button></td>
+            </tr>
+        }
+    </table>
+
+    <!-- <div id="stranicenje"></div>
+    <div id="sadrzaj"></div> -->
 </main>

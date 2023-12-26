@@ -17,7 +17,7 @@ export const routes: Routes = [
     { path: 'dokumentacija', component: DokumentacijaComponent},
     { path: 'korisnici', component: KorisniciComponent},
     { path: 'favoriti', component: FavoritiComponent},
-    { path: 'favoriti-detalji', component: FavoritiDetaljiComponent},
+    { path: 'favoriti-detalji/:id', component: FavoritiDetaljiComponent},
     { path: 'prijava', component: PrijavaComponent},
     { path: 'profil', component: ProfilComponent},
     { path: 'registracija', component: RegistracijaComponent},

@@ -7,5 +7,5 @@ export interface IFavorit{
     popularnost: number;
     putanjaSlike: string;
     vanjskaStranica: string;
-    tmdbId:number;
+    tmdbId: number;
 }

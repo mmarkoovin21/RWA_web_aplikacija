@@ -44,4 +44,20 @@ export class FavoritiService {
     }
     return [];
   }
+  async dohvatiFavorita(id: number): Promise<IFavorit>{
+    let dohvacen =  (await ((await fetch(this.restServis + "/baza/favoriti/" + id)) as Response).json()) as IFavorit;
+    let favorit: IFavorit = {
+      idSerije: dohvacen.idSerije,
+      naziv: dohvacen.naziv,
+      opis: dohvacen.opis,
+      brojEpizoda: dohvacen.brojEpizoda,
+      brojSezona: dohvacen.brojSezona,
+      putanjaSlike: dohvacen.putanjaSlike,
+      vanjskaStranica: dohvacen.vanjskaStranica,
+      popularnost: dohvacen.popularnost,
+      tmdbId: dohvacen.tmdbId
+    }
+
+    return favorit;
+  }
 }

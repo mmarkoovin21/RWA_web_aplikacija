@@ -3,6 +3,19 @@
 </header>
 <main>
     <div id="poruka">#poruka#</div><br>
-    <div id="stranicenje"></div>
-    <div id="sadrzaj"></div>
+    <table>
+        <tr>
+            <th scope='col'>Naslov</th>
+            <th>Opis</th>
+        </tr>
+        @for (f of favoriti; track f.idSerije) {
+            <tr>
+                <td>{{f.naziv}}</td>
+                <td>{{f.opis}}</td>
+                <td><button (click)="izbrisiFavorit(f.idSerije)">Detalji serije</button></td>
+            </tr>
+        }
+    </table>
+    <!-- <div id="stranicenje"></div>
+    <div id="sadrzaj"></div> -->
 </main>

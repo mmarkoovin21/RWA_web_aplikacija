@@ -55,6 +55,7 @@ function pokreniServer(){
 	// pripremiPutanjePretrazivanjeSerija();
 	// // pripremiPutanjuDokumentacija();
 	 pripremiPutanjeTMDB();
+	 pripremiPutanjeFavoriti();
 	 server.get("*", (zahtjev, odgovor) => {
 		odgovor.sendFile(path.resolve() + "/angular/");
 	});
@@ -71,7 +72,7 @@ function pokreniServer(){
 	// pripremiPutanjeStranica();
 
 	// pripremiPutanjeKorisnik();
-	// pripremiPutanjeFavoriti();
+	
 	// pripremiPutanjeSezone
 	// pripremiPutanjeDnevnik();
 

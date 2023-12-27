@@ -45,15 +45,15 @@ function pokreniServer(){
 		origin: ["http://localhost:4200"]
 	}));
 	server.use("/js", express.static("../aplikacija/js"));
-	server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
+	// server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
 	// server.use("/dokumentacijaDir", express.static("dokumentacija"));
 	server.use(express.static("angular/"));
 	
 
 	// pripremiPutanjePocetna();
-	// pripremiPutanjeAutentifikacija();
+	pripremiPutanjeAutentifikacija();
 	// pripremiPutanjePretrazivanjeSerija();
-	// // pripremiPutanjuDokumentacija();
+	// pripremiPutanjuDokumentacija();
 	 pripremiPutanjeTMDB();
 	 pripremiPutanjeFavoriti();
 	 pripremiPutanjeKorisnik();

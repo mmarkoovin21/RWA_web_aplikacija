@@ -21,15 +21,15 @@
     <div id="poruka">#poruka#</div>
     <form action="#" method="POST" id="formaPrijava">
         <label for="korime">Korisničko ime</label>
-        <input name="korime" type="text" id="korime">
+        <input name="korime" type="text" id="korime" [(ngModel)]="korime">
         <br>
         <label for="lozinka">Lozinka</label>
-        <input name="lozinka" type="password" id="lozinka">
+        <input name="lozinka" type="password" id="lozinka" [(ngModel)]="lozinka">
         <br>
         <label for="totp">TOTP:</label>
         <input name="totp" id="totp" type="text">
         <br>
-        <button type="submit">Prijava</button>
+        <button type="button" (click)="submit()">Prijava</button>
         <br>
         <button type="button">Prijavi se pomoću GitHuba</button>
     </form>

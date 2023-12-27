@@ -5,36 +5,36 @@
     <div id="poruka">#poruka#</div>
     <form action="#" method="POST" id="formaRegistracija">
         <label for="ime">Ime</label>
-        <input type="text" name="ime" id="ime" >
+        <input type="text" name="ime" id="ime" [(ngModel)]="ime">
         <br>
         <label for="prezime">Prezime</label>
-        <input type="text" name="prezime" id="prezime" >
+        <input type="text" name="prezime" id="prezime" [(ngModel)]="prezime">
         <br>
         <label for="adresa">Adresa</label>
-        <input type="text" name="adresa" id="adresa">
+        <input type="text" name="adresa" id="adresa" [(ngModel)]="adresa">
         <br>
         <div>
-            <input type="radio" name="spol" id="musko" value="Muško">
+            <input type="radio" name="spol" id="musko" value="Muško" [(ngModel)]="musko">
             <label class="radio" for="musko">Muško</label>
-            <input type="radio" name="spol" id="zensko" value="Žensko">
+            <input type="radio" name="spol" id="zensko" value="Žensko" [(ngModel)]="zensko">
             <label class="radio" for="zensko">Žensko</label>
         </div>
         <br>
         <label for="zvanje">Zvanje</label>
-        <input type="text" name="zvanje" id="zvanje">
+        <input type="text" name="zvanje" id="zvanje" [(ngModel)]="zvanje">
         <br>
         <label class="obavezno" for="lozinka">Obavezno</label>
         <label for="lozinka">Lozinka</label>
-        <input type="password" name="lozinka" id="lozinka" >
+        <input type="password" name="lozinka" id="lozinka" [(ngModel)]="lozinka">
         <br>
         <label class="obavezno" for="email">Obavezno</label>
         <label for="email">email</label>
-        <input type="email" name="email" id="email" >
+        <input type="email" name="email" id="email" [(ngModel)]="email">
         <br>
         <label class="obavezno" for="korime">Obavezno</label>
         <label for="korime">Korisničko ime</label>
-        <input type="text" name="korime" id="korime" >
+        <input type="text" name="korime" id="korime" [(ngModel)]="korime">
         <br>
-        <button type="submit">Registracija</button>
+        <button type="button" (click)="submit()" >Registracija</button>
     </form>
 </main>

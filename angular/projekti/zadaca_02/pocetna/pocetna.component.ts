@@ -6,10 +6,8 @@ import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-pocetna',
-    standalone: true,
     templateUrl: './pocetna.component.html',
     styleUrl: './pocetna.component.scss',
-    imports: [RouterLink]
 })
 export class PocetnaComponent {
     @Output() idSerije = new EventEmitter<number>();

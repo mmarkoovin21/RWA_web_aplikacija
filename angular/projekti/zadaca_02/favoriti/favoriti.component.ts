@@ -5,10 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-favoriti',
-    standalone: true,
     templateUrl: './favoriti.component.html',
     styleUrl: './favoriti.component.scss',
-    imports: []
 })
 export class FavoritiComponent implements OnInit{
     favoriti = new Array<IFavorit>();

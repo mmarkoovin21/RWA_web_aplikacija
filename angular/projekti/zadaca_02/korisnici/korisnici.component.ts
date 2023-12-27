@@ -4,10 +4,8 @@ import { KorisniciService } from '../src/servisi/korisnici.service';
 
 @Component({
     selector: 'app-korisnici',
-    standalone: true,
     templateUrl: './korisnici.component.html',
     styleUrl: './korisnici.component.scss',
-    imports: []
 })
 export class KorisniciComponent implements OnInit{
     korisnici = new Array<IKoriskik>;

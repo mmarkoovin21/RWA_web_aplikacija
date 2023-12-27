@@ -4,7 +4,7 @@
 <main>
     <div id="poruka">#poruka#</div><br>
     <form action="POST">
-        <input id="pretrazivanje" type="text" placeholder="Pretraži..." (keyup)="filtriraj($event)">
+        <input id="pretrazivanje" name="pretrazivanje" type="text" placeholder="Pretraži..." [(ngModel)]="filter" (keyup)="filtriraj()">
     </form>
     @if (serije.length > 0) {
         <table>

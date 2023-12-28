@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 import Konfiguracija from "./konfiguracija.js";
-import HtmlUpravitelj from '../aplikacija/htmlUpravitelj.js';
 import FetchUpravitelj from '../aplikacija/fetchUpravitelj.js';
 import portovi from "/var/www/RWA/2023/portovi.js";
 import restKorisnik from "./aplikacija/servisi/restKorisnik.js";
@@ -45,15 +44,9 @@ function pokreniServer(){
 		origin: ["http://localhost:4200"]
 	}));
 	server.use("/js", express.static("../aplikacija/js"));
-	// server.use("/css", express.static("aplikacija/css/mmarkovin21.css"));
-	// server.use("/dokumentacijaDir", express.static("dokumentacija"));
 	server.use(express.static("angular/"));
 	
-
-	// pripremiPutanjePocetna();
 	pripremiPutanjeAutentifikacija();
-	// pripremiPutanjePretrazivanjeSerija();
-	// pripremiPutanjuDokumentacija();
 	 pripremiPutanjeTMDB();
 	 pripremiPutanjeFavoriti();
 	 pripremiPutanjeKorisnik();
@@ -68,11 +61,8 @@ function pokreniServer(){
 	// 		nastavi();
 	// 	}
 	// });
-
-	// pripremiPutanjeRegistracija();
-	// pripremiPutanjeStranica();
 	
-	// pripremiPutanjeSezone
+	// pripremiPutanjeSezone();
 	// pripremiPutanjeDnevnik();
 
     server.use((zahtjev, odgovor) => {
@@ -129,28 +119,8 @@ function pripremiPutanjeTMDB() {
 	server.get("/api/tmdb/serije", restTMDB.getSerije.bind(restTMDB));
 }
 
-function pripremiPutanjePocetna() {
-	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
-	server.get("/", htmlUpravitelj.pocetna.bind(htmlUpravitelj));
-}
-
-function pripremiPutanjePretrazivanjeSerija() {
-	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
-	server.get("/serijaDetalji/:id",htmlUpravitelj.serijaDetalji.bind(htmlUpravitelj));
-	server.get("/favoritiDetalji/:id",htmlUpravitelj.favoritiDetalji.bind(htmlUpravitelj));
-}
-function pripremiPutanjeRegistracija(){
-	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
-	let fetchUpravitelj = new FetchUpravitelj(konf.dajKonf().jwtTajniKljuc);
-	server.get("/registracija", htmlUpravitelj.registracija.bind(htmlUpravitelj));
-}
-
 function pripremiPutanjeAutentifikacija() {
-	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
 	let fetchUpravitelj = new FetchUpravitelj(konf.dajKonf().jwtTajniKljuc);
-
-	server.get("/odjava", htmlUpravitelj.odjava.bind(htmlUpravitelj));
-	server.get("/prijava", htmlUpravitelj.prijava.bind(htmlUpravitelj));
 	server.get("/getJWT", fetchUpravitelj.getJWT.bind(fetchUpravitelj));
 
 	server.get(
@@ -161,18 +131,4 @@ function pripremiPutanjeAutentifikacija() {
 		"/baza/korisnici/:korime/prijava",
 		restKorisnik.postKorisnikPrijava
 	);
-}
-
-function pripremiPutanjeStranica(){
-	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
-
-	server.get("/profil",htmlUpravitelj.profil.bind(htmlUpravitelj));
-	server.get("/favoriti",htmlUpravitelj.favoriti.bind(htmlUpravitelj));
-	server.get("/korisnici",htmlUpravitelj.korisnici.bind(htmlUpravitelj));
-	server.get("/dnevnik",htmlUpravitelj.dnevnik.bind(htmlUpravitelj));
-	server.get("/favoritiDetalji",htmlUpravitelj.favoritiDetalji.bind(htmlUpravitelj));
-}
-function pripremiPutanjuDokumentacija(){
-	let htmlUpravitelj = new HtmlUpravitelj(konf.dajKonf().jwtTajniKljuc);
-	server.get("/dokumentacija",htmlUpravitelj.dokumentacija.bind(htmlUpravitelj));
 }

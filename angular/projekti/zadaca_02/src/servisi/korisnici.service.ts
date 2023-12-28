@@ -83,4 +83,21 @@ export class KorisniciService {
     }
     return [];
   }
+  async obrisiKorisnika(korime: string): Promise<boolean>{
+    let token = await this.dajJWT();
+            
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+    zaglavlje.set("Authorization", token);
+
+      let odgovorRegistriraj = await fetch("/baza/korisnici/" + korime, {
+        method: "DELETE",
+        headers: zaglavlje
+      });
+
+      if(odgovorRegistriraj.status == 201){
+        return true;
+      }
+    return false;
+  }
 }

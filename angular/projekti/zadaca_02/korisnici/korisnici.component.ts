@@ -12,11 +12,20 @@ export class KorisniciComponent implements OnInit{
 
     constructor(private korisnikServis: KorisniciService){}
     ngOnInit(): void {
+        this.osvjeziKorisnike();
+    }
+    osvjeziKorisnike(){
         this.korisnikServis.dohvatiKorisnike().then((k)=>{
             this.korisnici = k;
         });
     }
-    obrisiKorisnika(korime: string) {
-        throw new Error('Method not implemented.');
+    async obrisiKorisnika(korime: string) {
+        let obrisan = await this.korisnikServis.obrisiKorisnika(korime);
+        if(obrisan){
+           this.osvjeziKorisnike();
+            
+        }else{
+            console.log("Greška! Korisnik nije pronađen!");
         }
+    }
 }

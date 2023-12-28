@@ -6,7 +6,7 @@ export interface IKoriskik{
     zvanje :string;
     spol: string;
     email:string;
-    korime: string;
+    korIme: string;
     lozinka: string;
     uloge_korisnika_id: number;
 }

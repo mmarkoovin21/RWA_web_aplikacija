@@ -59,6 +59,7 @@ export class KorisniciService {
     if(odgovor.status == 200){
       let podaci = JSON.parse(await odgovor.text()) as Array<IKoriskik>;
         this.korisnici = podaci;
+        
       
 
       let dohvaceniKorisnici: Array<IKoriskik> = [];
@@ -72,7 +73,7 @@ export class KorisniciService {
             zvanje : k.zvanje,
             spol: k.spol,
             email: k.email,
-            korime: k.korime,
+            korIme: k.korIme,
             lozinka: k.lozinka,
             uloge_korisnika_id: k.uloge_korisnika_id
           };

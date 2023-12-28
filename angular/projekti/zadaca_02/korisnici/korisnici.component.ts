@@ -16,7 +16,7 @@ export class KorisniciComponent implements OnInit{
             this.korisnici = k;
         });
     }
-    obrisiKorisnika(id: number) {
+    obrisiKorisnika(korime: string) {
         throw new Error('Method not implemented.');
         }
 }

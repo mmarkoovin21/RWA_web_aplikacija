@@ -11,6 +11,49 @@ export class KorisniciService {
 
   constructor() { }
 
+  async dajJWT() : Promise<string> {
+    let odgovor = await (await fetch(this.restServis + "/getJWT")).text();
+    let rezultat = JSON.parse(odgovor);
+    if ('ok' in rezultat) {
+      return rezultat.ok;
+    }
+    else {
+      return '';
+    }
+  }
+  async registrirajKorisnika(tijelo: string): Promise<boolean>{
+    let token = await this.dajJWT();
+            
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+    zaglavlje.set("Authorization", token);
+
+      let odgovorRegistriraj = await fetch("/baza/korisnici", {
+        method: "POST",
+        headers: zaglavlje,
+        body: tijelo
+      });
+
+      if(odgovorRegistriraj.status == 201){
+        return true;
+      }
+    return false;
+  }
+  async prijaviKorisnika(lozinka: string, korime: string) : Promise<boolean>{
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+
+    let odgovorPrijavi = await fetch("/baza/korisnici/" + korime + "/prijava", {
+        method: "POST",
+        headers: zaglavlje,
+        body: lozinka
+    });
+    if(odgovorPrijavi.status == 201){
+      return true;
+    }
+    return false;
+  }
+
   async dohvatiKorisnike():Promise<Array<IKoriskik>>{
     let odgovor = (await fetch(this.restServis + "/baza/korisnici"));
     if(odgovor.status == 200){

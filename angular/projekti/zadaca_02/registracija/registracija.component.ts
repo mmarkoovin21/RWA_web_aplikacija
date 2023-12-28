@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from '../src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { KorisniciService } from '../src/servisi/korisnici.service';
 
 @Component({
     selector: 'app-registracija',
@@ -20,11 +21,12 @@ export class RegistracijaComponent {
     email: string = '';
     korime: string = '';
     constructor(
-        private router : Router
+        private router : Router,
+        private korisniciServis: KorisniciService
     ){
 }
 
-    async submit() {
+    async registriraj() {
         if(this.musko != ''){
             this.spol = this.musko;
         }else if(this.zensko != ''){
@@ -40,16 +42,12 @@ export class RegistracijaComponent {
             email: this.email,
             korime: this.korime
         }
-        let zaglavlje = new Headers();
-        zaglavlje.set("Content-Type", "application/json");
-
-        let odgovorRegistriraj = await fetch("/baza/korisnici", {
-            method: "POST",
-            headers: zaglavlje,
-            body: JSON.stringify(tijelo)
-        });
-        if(odgovorRegistriraj.status == 201){
+        let t = JSON.stringify(tijelo);
+        let registracija =  await this.korisniciServis.registrirajKorisnika(t);
+        if(registracija){
             this.router.navigate(["pocetna"]);
+        }else{
+            console.log("Došlo je do pogreške! Korisnik nije registriran!");
         }
     }
 }

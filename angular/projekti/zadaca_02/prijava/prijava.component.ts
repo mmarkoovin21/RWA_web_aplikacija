@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { KorisniciService } from '../src/servisi/korisnici.service';
 
 @Component({
     selector: 'app-prijava',
@@ -11,25 +12,16 @@ export class PrijavaComponent {
     lozinka: string = '';
 
     constructor(
-        private router : Router
+        private router : Router,
+        private korisniciServis: KorisniciService
     ){}
 
-    async submit() {
-        let tijelo = {
-            lozinka: this.lozinka
-        }
-        
-        let zaglavlje = new Headers();
-        zaglavlje.set("Content-Type", "application/json");
-
-        let odgovorPrijavi = await fetch("/baza/korisnici/" + this.korime + "/prijava", {
-            method: "POST",
-            headers: zaglavlje,
-            body: JSON.stringify(tijelo)
-        });
-        
-        if(odgovorPrijavi.status == 201){
+    async prijavi() {
+        let prijava = await this.korisniciServis.prijaviKorisnika(this.lozinka,this.korime);
+        if(prijava){
             this.router.navigate(["pocetna"]);
+        }else{
+            console.log("Došlo je do pogreške! Korisnik nije prijavljen!");
         }
     }
 

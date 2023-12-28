@@ -17,7 +17,11 @@ export class PrijavaComponent {
     ){}
 
     async prijavi() {
-        let prijava = await this.korisniciServis.prijaviKorisnika(this.lozinka,this.korime);
+        let tijelo = {
+            lozinka: this.lozinka
+        }
+        let t = JSON.stringify(tijelo);
+        let prijava = await this.korisniciServis.prijaviKorisnika(t,this.korime);
         if(prijava){
             this.router.navigate(["pocetna"]);
         }else{

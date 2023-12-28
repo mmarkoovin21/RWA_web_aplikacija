@@ -39,14 +39,14 @@ export class KorisniciService {
       }
     return false;
   }
-  async prijaviKorisnika(lozinka: string, korime: string) : Promise<boolean>{
+  async prijaviKorisnika(tijelo: string, korime: string) : Promise<boolean>{
     let zaglavlje = new Headers();
     zaglavlje.set("Content-Type", "application/json");
 
     let odgovorPrijavi = await fetch("/baza/korisnici/" + korime + "/prijava", {
         method: "POST",
         headers: zaglavlje,
-        body: lozinka
+        body: tijelo
     });
     if(odgovorPrijavi.status == 201){
       return true;

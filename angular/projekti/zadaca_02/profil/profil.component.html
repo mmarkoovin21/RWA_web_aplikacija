@@ -26,8 +26,9 @@
                     <p id="spol">{{korisnik?.spol}}</p>
                     <h3>Zvanje</h3>
                     <p id="zvanje">{{korisnik?.zvanje}}</p>
+                    <br>
+                    <button type="button" (click)="postavi()">Promjeni podatke</button>
                 </div>
-        <button type="button" (click)="postavi()">Promjeni podatke</button>
         }
         @if(promjeni){
             <div>
@@ -44,6 +45,7 @@
                 <input type="text" name="zvanje" id="zvanjeUnos" placeholder="Zvanje" [(ngModel)]="zvanje"><br>
                 <input type="text" name="lozinka" id="lozinkaUnos" placeholder="Lozinka" [(ngModel)]="lozinka"><br>
                 <button type="button" (click)="azurirajPodatke()">Ažuriraj podatke</button>
+                <button type="button" (click)="odustani()">Odustani</button>
             </form>
         </div>
         }

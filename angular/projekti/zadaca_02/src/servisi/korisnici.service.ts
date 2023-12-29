@@ -46,8 +46,7 @@ export class KorisniciService {
 
       if(odgovorRegistriraj.status == 201){
         return true;
-      }
-    return false;
+      } else return false;
   }
   async prijaviKorisnika(tijelo: string, korime: string) : Promise<boolean>{
     let zaglavlje = new Headers();
@@ -60,8 +59,7 @@ export class KorisniciService {
     });
     if(odgovorPrijavi.status == 201){
       return true;
-    }
-    return false;
+    } else return false;
   }
 
   async dohvatiKorisnike():Promise<Array<IKoriskik>>{
@@ -91,23 +89,6 @@ export class KorisniciService {
     }
     return [];
   }
-  async obrisiKorisnika(korime: string): Promise<boolean>{
-    let token = await this.dajJWT();
-            
-    let zaglavlje = new Headers();
-    zaglavlje.set("Content-Type", "application/json");
-    zaglavlje.set("Authorization", token);
-
-      let odgovorRegistriraj = await fetch("/baza/korisnici/" + korime, {
-        method: "DELETE",
-        headers: zaglavlje
-      });
-
-      if(odgovorRegistriraj.status == 201){
-        return true;
-      }
-    return false;
-  }
   async dohvatiKorisnika(): Promise<IKoriskik>{
     let token = await this.dajJWT();
     let k = this.dajTijelo(token).korime;
@@ -128,5 +109,40 @@ export class KorisniciService {
           uloge_korisnika_id: podaci.uloge_korisnika_id
       }
     return korisnik;
+  }
+
+  async obrisiKorisnika(korime: string): Promise<boolean>{
+    let token = await this.dajJWT();
+            
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+    zaglavlje.set("Authorization", token);
+
+      let odgovorRegistriraj = await fetch("/baza/korisnici/" + korime, {
+        method: "DELETE",
+        headers: zaglavlje
+      });
+
+      if(odgovorRegistriraj.status == 201){
+        return true;
+      } else return false;
+  }
+  
+  async azurirajKorisnika(tijelo: string): Promise<boolean>{
+    let token = await this.dajJWT();
+    let k = this.dajTijelo(token).korime;
+
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+    zaglavlje.set("Authorization", token);
+
+    let odgovorAzuriraj = await fetch("/baza/korisnici/" + k, {
+      method: "PUT",
+      headers: zaglavlje,
+      body: tijelo
+    });
+    if(odgovorAzuriraj.status == 201){
+      return true;
+    }else return false;
   }
 }

@@ -24,6 +24,9 @@ export class ProfilComponent implements OnInit{
         private korisnikServis: KorisniciService
     ){}
     ngOnInit(): void {
+        this.osvjeziVrijednosti();
+    }
+    osvjeziVrijednosti(){
         this.korisnikServis.dohvatiKorisnika().then((k)=>{
             this.korisnik = k;
 
@@ -41,13 +44,41 @@ export class ProfilComponent implements OnInit{
             
         });
     }
-        postavi() {
-            this.promjeni = true;
+    postavi() {
+        this.promjeni = true;
+    }
+    makni(){
+        this.promjeni = false;
+    }
+    odustani() {
+        this.osvjeziVrijednosti();
+        this.promjeni = false;
+    }
+    async azurirajPodatke() {
+        if(this.lozinka == ''){
+            this.korisnikServis.dohvatiKorisnika().then((k)=>{
+                this.korisnik = k;
+                    this.lozinka = this.korisnik?.lozinka;
+            });
         }
-        makni(){
-            this.promjeni = false;
+        
+        let tijelo = {
+            ime: this.ime,
+            prezime: this.prezime,
+            adresa: this.adresa,
+            spol: this.spol,
+            zvanje: this.zvanje,
+            lozinka: this.lozinka
         }
-        azurirajPodatke() {
-        this.makni();
+        let t = JSON.stringify(tijelo);
+        
+        let azuriran = await this.korisnikServis.azurirajKorisnika(t);
+        if(azuriran){
+            this.osvjeziVrijednosti();
+            this.makni();
+        }else{
+            console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
+            
         }
+    }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IKoriskik } from '../interfaces/IKorisnici';
 import { environment } from '../environments/environment';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,15 @@ export class KorisniciService {
       return '';
     }
   }
+  dekodirajBase64(data: string){
+    return atob(data);
+  }
+  
+  dajTijelo(token: any): any{
+    let dijelovi = token.split(".");
+    return JSON.parse(this.dekodirajBase64(dijelovi[1]));
+  }
+
   async registrirajKorisnika(tijelo: string): Promise<boolean>{
     let token = await this.dajJWT();
             
@@ -59,8 +69,6 @@ export class KorisniciService {
     if(odgovor.status == 200){
       let podaci = JSON.parse(await odgovor.text()) as Array<IKoriskik>;
         this.korisnici = podaci;
-        
-      
 
       let dohvaceniKorisnici: Array<IKoriskik> = [];
 
@@ -99,5 +107,26 @@ export class KorisniciService {
         return true;
       }
     return false;
+  }
+  async dohvatiKorisnika(): Promise<IKoriskik>{
+    let token = await this.dajJWT();
+    let k = this.dajTijelo(token).korime;
+
+    let odgovor = (await fetch(this.restServis + "/baza/korisnici/" + k));
+      let podaci = JSON.parse(await odgovor.text());
+
+      let korisnik: IKoriskik ={
+          idKorisnika: podaci.idKorisnika,
+          ime: podaci.ime,
+          prezime: podaci.prezime,
+          adresa: podaci.adresa,
+          zvanje: podaci.zvanje,
+          spol: podaci.spol,
+          email: podaci.email,
+          korIme: podaci.korIme,
+          lozinka: podaci.lozinka,
+          uloge_korisnika_id: podaci.uloge_korisnika_id
+      }
+    return korisnik;
   }
 }

@@ -44,7 +44,8 @@ export const routes: Routes = [
     FavoritiDetaljiComponent,
     PrijavaComponent,
     RegistracijaComponent,
-    SerijaDetaljiComponent
+    SerijaDetaljiComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

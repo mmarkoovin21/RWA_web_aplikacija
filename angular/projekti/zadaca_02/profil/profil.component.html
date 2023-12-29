@@ -12,35 +12,41 @@
         <h1>Profil</h1>
     </header>
     <main>
+        @if(!promjeni){
         <div>
-            <h3>Ime</h3>
-            <p id="ime">{{korisnik?.ime}}</p>
-            <h3>Prezime</h3>
-            <p id="prezime">{{korisnik?.prezime}}</p>
-            <h3>Adresa</h3>
-            <p id="adresa">{{korisnik?.adresa}}</p>
-            <h3>E-mail</h3>
-            <p id="email">{{korisnik?.email}}</p>
-            <h3>Spol</h3>
-            <p id="spol">{{korisnik?.spol}}</p>
-        </div>
-        <h3>Promjeni podatke</h3>
-        <div>
+                    <h3>Ime</h3>
+                    <p id="ime">{{korisnik?.ime}}</p>
+                    <h3>Prezime</h3>
+                    <p id="prezime">{{korisnik?.prezime}}</p>
+                    <h3>Adresa</h3>
+                    <p id="adresa">{{korisnik?.adresa}}</p>
+                    <h3>E-mail</h3>
+                    <p id="email">{{korisnik?.email}}</p>
+                    <h3>Spol</h3>
+                    <p id="spol">{{korisnik?.spol}}</p>
+                    <h3>Zvanje</h3>
+                    <p id="zvanje">{{korisnik?.zvanje}}</p>
+                </div>
+        <button type="button" (click)="postavi()">Promjeni podatke</button>
+        }
+        @if(promjeni){
+            <div>
             <form action="#" method="post" id="formaProfil">
-                <input type="text" name="ime" id="imeUnos" placeholder="Ime"><br>
-                <input type="text" name="prezime" id="prezimeUnos" placeholder="Prezime" ><br>
-                <input type="text" name="adresa" id="adresaUnos" placeholder="Adresa"><br>
+                <input type="text" name="ime" id="imeUnos" placeholder="Ime" [(ngModel)]="ime"><br>
+                <input type="text" name="prezime" id="prezimeUnos" placeholder="Prezime" [(ngModel)]="prezime"><br>
+                <input type="text" name="adresa" id="adresaUnos" placeholder="Adresa" [(ngModel)]="adresa"><br>
                 <div>
                     <label class="radio" for="muskoUnos">Muško</label>
-                    <input type="radio" name="spol" id="muskoUnos" value="Muško">
+                    <input type="radio" name="spol" id="muskoUnos" value="Muško" [(ngModel)]="musko">
                     <label class="radio" for="zenskoUnos">Žensko</label>
-                    <input type="radio" name="spol" id="zenskoUnos" value="Žensko"><br>
+                    <input type="radio" name="spol" id="zenskoUnos" value="Žensko" [(ngModel)]="zensko"><br>
                 </div>
-                <input type="text" name="zvanje" id="zvanjeUnos" placeholder="Zvanje"><br>
-                <input type="text" name="lozinka" id="lozinkaUnos" placeholder="Lozinka"><br>
-                <button type="submit">Ažuriraj podatke</button>
+                <input type="text" name="zvanje" id="zvanjeUnos" placeholder="Zvanje" [(ngModel)]="zvanje"><br>
+                <input type="text" name="lozinka" id="lozinkaUnos" placeholder="Lozinka" [(ngModel)]="lozinka"><br>
+                <button type="button" (click)="azurirajPodatke()">Ažuriraj podatke</button>
             </form>
         </div>
+        }
     </main>
 </body>
 </html>

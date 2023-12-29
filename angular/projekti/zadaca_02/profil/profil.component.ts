@@ -9,16 +9,16 @@ import { IKoriskik } from '../src/interfaces/IKorisnici';
 })
 export class ProfilComponent implements OnInit{
     korisnik?: IKoriskik;
-    ime = this.korisnik?.ime;
-    prezime = this.korisnik?.prezime;
-    adresa = this.korisnik?.adresa;
-    musko = '';
-    zensko = '';
-    spol = this.korisnik?.spol;
-    zvanje = this.korisnik?.prezime;
-    lozinka = '';
-    email = this.korisnik?.email;
-    korime = this.korisnik?.korIme;
+    promjeni: boolean = false;
+    ime: string = '';
+    prezime: string = '';
+    adresa: string = '';
+    musko: string = '';
+    zensko: string = '';
+    spol: string = '';
+    zvanje: string = '';
+    lozinka: string = '';
+    korime: string = '';
 
     constructor(
         private korisnikServis: KorisniciService
@@ -26,7 +26,28 @@ export class ProfilComponent implements OnInit{
     ngOnInit(): void {
         this.korisnikServis.dohvatiKorisnika().then((k)=>{
             this.korisnik = k;
+
+            this.ime = this.korisnik.ime;
+            this.prezime = this.korisnik.prezime;
+            this.adresa = this.korisnik.adresa;
+            this.zvanje = this.korisnik.zvanje;
+            this.korime = this.korisnik.korIme;
+            this.spol = this.korisnik.spol;
+            if(this.spol == "Muško"){
+                this.musko = "Muško";
+            }else if(this.spol == "Žensko"){
+                this.zensko = "Žensko";
+            }
+            
         });
     }
-
+        postavi() {
+            this.promjeni = true;
+        }
+        makni(){
+            this.promjeni = false;
+        }
+        azurirajPodatke() {
+        this.makni();
+        }
 }

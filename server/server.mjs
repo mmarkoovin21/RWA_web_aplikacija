@@ -121,6 +121,12 @@ function pripremiPutanjeTMDB() {
 
 function pripremiPutanjeAutentifikacija() {
 	let fetchUpravitelj = new FetchUpravitelj(konf.dajKonf().jwtTajniKljuc);
+	server.get("/odjava",(zahtjev, odgovor)=>{
+		zahtjev.session.korisnik = null;
+		zahtjev.session.korime = null;
+		odgovor.status(201);
+		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
+	});
 	server.get("/getJWT", fetchUpravitelj.getJWT.bind(fetchUpravitelj));
 
 	server.get(

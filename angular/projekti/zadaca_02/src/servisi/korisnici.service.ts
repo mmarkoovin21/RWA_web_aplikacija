@@ -61,6 +61,13 @@ export class KorisniciService {
       return true;
     } else return false;
   }
+  async odjaviKorisnika(): Promise<boolean>{
+    let odgovor = await fetch(this.restServis + "/odjava");
+
+    if(odgovor.status == 201){
+      return true;
+    }else return false;
+  }
 
   async dohvatiKorisnike():Promise<Array<IKoriskik>>{
     let odgovor = (await fetch(this.restServis + "/baza/korisnici"));

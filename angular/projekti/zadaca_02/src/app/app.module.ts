@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavigacijaComponent } from '../../komponente/navigacija/navigacija.component';
 import { PodnozjeComponent } from '../../komponente/podnozje/podnozje.component';
+import { OdjavaComponent } from '../../komponente/odjava/odjava.component';
 
 export const routes: Routes = [
   { path: '', component: PocetnaComponent},
@@ -29,6 +30,7 @@ export const routes: Routes = [
   { path: 'profil', component: ProfilComponent},
   { path: 'registracija', component: RegistracijaComponent},
   { path: 'serija-detalji/:id', component: SerijaDetaljiComponent},
+  { path: 'odjava', component: OdjavaComponent},
 ];
 
 @NgModule({

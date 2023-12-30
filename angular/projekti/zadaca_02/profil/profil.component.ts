@@ -9,6 +9,7 @@ import { IKoriskik } from '../src/interfaces/IKorisnici';
 })
 export class ProfilComponent implements OnInit{
     korisnik?: IKoriskik;
+    tijelo?: any;
     promjeni: boolean = false;
     ime: string = '';
     prezime: string = '';
@@ -49,10 +50,16 @@ export class ProfilComponent implements OnInit{
     }
     async azurirajPodatke() {
         if(this.lozinka == ''){
-            console.log("Lozinka treba biti promjenjena!");
+            this.tijelo = {
+                ime: this.ime,
+                prezime: this.prezime,
+                adresa: this.adresa,
+                spol: this.spol,
+                zvanje: this.zvanje
+            }
             
         }else{
-                let tijelo = {
+            this.tijelo = {
                 ime: this.ime,
                 prezime: this.prezime,
                 adresa: this.adresa,
@@ -60,16 +67,19 @@ export class ProfilComponent implements OnInit{
                 zvanje: this.zvanje,
                 lozinka: this.lozinka
             }
-            let t = JSON.stringify(tijelo);
+        }
+        console.log(this.tijelo);
+        
+        let t = JSON.stringify(this.tijelo);
+        
+        let azuriran = await this.korisnikServis.azurirajKorisnika(t);
+        if(azuriran){
+            this.osvjeziVrijednosti();
+            this.makni();
+            this.lozinka = '';
+        }else{
+            console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
             
-            let azuriran = await this.korisnikServis.azurirajKorisnika(t);
-            if(azuriran){
-                this.osvjeziVrijednosti();
-                this.makni();
-            }else{
-                console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
-                
-            }
         }
     }
 }

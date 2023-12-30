@@ -77,7 +77,8 @@ exports.putKorisnik = function (zahtjev, odgovor) {
 	odgovor.type("application/json");
 	let korime = zahtjev.params.korime;
 	let podaci = zahtjev.body;
-	podaci.lozinka = kodovi.kreirajSHA256(podaci.lozinka, korime);
+	if(podaci.lozinka != undefined)
+		podaci.lozinka = kodovi.kreirajSHA256(podaci.lozinka, korime);
 	odgovor.status(201);
 	let kdao = new KorisnikDAO();
 	kdao.azuriraj(korime, podaci).then((poruka) => {

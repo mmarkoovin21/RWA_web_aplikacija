@@ -95,8 +95,7 @@ class KorisnikDAO {
 		sql += ` WHERE korIme=?;`
 		podaci.push(korime);
 
-		this.baza.izvrsiUpit(sql, podaci);
-		return true;
+		this.baza.izvrsiUpit(sql, podaci);		return true;
 	}
 }
 

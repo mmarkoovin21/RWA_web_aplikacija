@@ -50,11 +50,52 @@ class KorisnikDAO {
 	}
 
 	azuriraj = async function (korime, korisnik) {
-		console.log(korisnik);
-		let sql = `UPDATE Korisnici SET ime=?, prezime=?, adresa=?, spol=?, zvanje=?, lozinka=? WHERE korIme=?`;
-        let podaci = [korisnik.ime, korisnik.prezime, korisnik.adresa, korisnik.spol, korisnik.zvanje,
-                      korisnik.lozinka,korime];
-		await this.baza.izvrsiUpit(sql,podaci);
+
+		if (korisnik.ime == null && korisnik.prezime == null && korisnik.lozinka == null && korisnik.korime == null)
+			return false;
+		let podaci = [];
+		let sql = `UPDATE Korisnici SET `;
+		if (korisnik.ime != null){
+			sql += `ime=?`
+			podaci.push(korisnik.ime);
+		}
+
+		if (korisnik.prezime != null) {
+			if (korisnik.ime != null)
+				sql += `, `;
+			sql += `prezime=?`
+			podaci.push(korisnik.prezime);
+		}
+
+		if (korisnik.adresa != null) {
+			if (korisnik.ime != null || korisnik.prezime != null)
+				sql += `, `
+			sql += `adresa=? `
+			podaci.push(korisnik.adresa);
+		}
+		if (korisnik.spol != null) {
+			if (korisnik.ime != null || korisnik.prezime != null || korisnik.adresa != null)
+				sql += `, `
+			sql += `spol=? `
+			podaci.push(korisnik.spol);
+		}
+		if (korisnik.zvanje != null) {
+			if (korisnik.ime != null || korisnik.prezime != null || korisnik.adresa != null || korisnik.spol != null)
+				sql += `, `
+			sql += `zvanje=? `
+			podaci.push(korisnik.zvanje);
+		}
+
+		if (korisnik.lozinka != null) {
+			if (korisnik.ime != null || korisnik.prezime != null || korisnik.adresa != null || korisnik.spol != null || korisnik.zvanje != null)
+				sql += `, `
+			sql += `lozinka=? `
+			podaci.push(korisnik.lozinka);
+		}
+		sql += ` WHERE korIme=?;`
+		podaci.push(korime);
+
+		this.baza.izvrsiUpit(sql, podaci);
 		return true;
 	}
 }

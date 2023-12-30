@@ -49,29 +49,27 @@ export class ProfilComponent implements OnInit{
     }
     async azurirajPodatke() {
         if(this.lozinka == ''){
-            this.korisnikServis.dohvatiKorisnika().then((k)=>{
-                this.korisnik = k;
-                    this.lozinka = this.korisnik?.lozinka;
-            });
-        }
-        
-        let tijelo = {
-            ime: this.ime,
-            prezime: this.prezime,
-            adresa: this.adresa,
-            spol: this.spol,
-            zvanje: this.zvanje,
-            lozinka: this.lozinka
-        }
-        let t = JSON.stringify(tijelo);
-        
-        let azuriran = await this.korisnikServis.azurirajKorisnika(t);
-        if(azuriran){
-            this.osvjeziVrijednosti();
-            this.makni();
-        }else{
-            console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
+            console.log("Lozinka treba biti promjenjena!");
             
+        }else{
+                let tijelo = {
+                ime: this.ime,
+                prezime: this.prezime,
+                adresa: this.adresa,
+                spol: this.spol,
+                zvanje: this.zvanje,
+                lozinka: this.lozinka
+            }
+            let t = JSON.stringify(tijelo);
+            
+            let azuriran = await this.korisnikServis.azurirajKorisnika(t);
+            if(azuriran){
+                this.osvjeziVrijednosti();
+                this.makni();
+            }else{
+                console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
+                
+            }
         }
     }
 }

@@ -13,8 +13,6 @@ export class ProfilComponent implements OnInit{
     ime: string = '';
     prezime: string = '';
     adresa: string = '';
-    musko: string = '';
-    zensko: string = '';
     spol: string = '';
     zvanje: string = '';
     lozinka: string = '';
@@ -36,11 +34,6 @@ export class ProfilComponent implements OnInit{
             this.zvanje = this.korisnik.zvanje;
             this.korime = this.korisnik.korIme;
             this.spol = this.korisnik.spol;
-            if(this.spol == "Muško"){
-                this.musko = "Muško";
-            }else if(this.spol == "Žensko"){
-                this.zensko = "Žensko";
-            }
             
         });
     }

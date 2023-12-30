@@ -9,4 +9,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'zadaca_02';
+  static admin = false;
+  static prijavljen = false;
 }

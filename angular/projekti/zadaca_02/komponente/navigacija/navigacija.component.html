@@ -1,15 +1,22 @@
 <nav>
     <div>
-        <a class="nav-link" routerLink="/">Početna</a>
-        <a class="nav-link" routerLink="/registracija">Registracija</a>
-        <a class="nav-link" routerLink="/favoriti">Favoriti</a>
-        <a class="nav-link" routerLink="/korisnici">Korisnici</a>
-        <a class="nav-link" routerLink="/dnevnik">Dnevnik</a>
-        <a class="nav-link" routerLink="/dokumentacija">Dokumentacija</a>
+        <a class="nav-link" routerLink="/" (click)="vratiNaPrijavu()">Početna</a>
+        <a class="nav-link" routerLink="/favoriti" (click)="vratiNaPrijavu()">Favoriti</a>
+        <a class="nav-link" routerLink="/dokumentacija" (click)="vratiNaPrijavu()">Dokumentacija</a>
+        @if(jeAdmin()){
+            <a class="nav-link" routerLink="/korisnici">Korisnici</a>
+            <a class="nav-link" routerLink="/registracija">Registracija</a>
+            <a class="nav-link" routerLink="/dnevnik">Dnevnik</a>
+            
+        }
+        
     </div>
     <div id="prijvaOdjava">
         <a class="nav-link" routerLink="/prijava">Prijava</a>
-        <a class="nav-link" routerLink="/profil">Profil</a>
-        <a class="nav-link" routerLink="/odjava" (click)="odjavi()">Odjava</a>
+        <a class="nav-link" routerLink="/profil" (click)="vratiNaPrijavu()">Profil</a>
+        @if (jePrijavljen()) {
+            <a class="nav-link" routerLink="/odjava" (click)="odjavi()">Odjava</a>
+        }
+        
     </div>
 </nav>

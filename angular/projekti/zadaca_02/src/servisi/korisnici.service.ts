@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IKoriskik } from '../interfaces/IKorisnici';
 import { environment } from '../environments/environment';
-import { JsonPipe } from '@angular/common';
+import { AppComponent } from '../app/app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,13 @@ export class KorisniciService {
   dajTijelo(token: any): any{
     let dijelovi = token.split(".");
     return JSON.parse(this.dekodirajBase64(dijelovi[1]));
+  }
+  async jeAdmin(): Promise<boolean>{
+    let token = await this.dajJWT();
+    let k = this.dajTijelo(token).korime;
+
+    if(k = "admin") return true;
+    return false;
   }
 
   async registrirajKorisnika(tijelo: string): Promise<boolean>{

@@ -19,7 +19,7 @@ import { PodnozjeComponent } from '../../komponente/podnozje/podnozje.component'
 import { OdjavaComponent } from '../../komponente/odjava/odjava.component';
 
 export const routes: Routes = [
-  { path: '', component: PocetnaComponent},
+  { path: '', component: PrijavaComponent},
   { path: 'pocetna', component: PocetnaComponent},
   { path: 'dnevnik', component: DnevnikComponent},
   { path: 'dokumentacija', component:  DokumentacijaComponent},

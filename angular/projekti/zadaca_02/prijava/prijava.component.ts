@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { KorisniciService } from '../src/servisi/korisnici.service';
+import { AppComponent } from '../src/app/app.component';
 
 @Component({
     selector: 'app-prijava',
@@ -23,10 +24,17 @@ export class PrijavaComponent {
         let t = JSON.stringify(tijelo);
         let prijava = await this.korisniciServis.prijaviKorisnika(t,this.korime);
         if(prijava){
+            AppComponent.prijavljen = true;
+            this.jeAdmin();
             this.router.navigate(["pocetna"]);
         }else{
             console.log("Došlo je do pogreške! Korisnik nije prijavljen!");
         }
+    }
+    async jeAdmin(){
+        this.korisniciServis.jeAdmin().then((a)=>{
+            if(a) AppComponent.admin = true;
+        });
     }
 
 }

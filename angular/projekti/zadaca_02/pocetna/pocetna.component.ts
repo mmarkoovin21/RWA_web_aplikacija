@@ -1,4 +1,4 @@
-import { Component, Input, NgModule} from '@angular/core';
+import { Component} from '@angular/core';
 import { SerijeService } from '../src/servisi/serije.service';
 import { ISerijaTmdb } from '../src/interfaces/ISerijaTmdb';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     templateUrl: './pocetna.component.html',
     styleUrl: './pocetna.component.scss',
 })
-export class PocetnaComponent {
+export class PocetnaComponent{
     serije = new Array<ISerijaTmdb>();
     filter: string  = '';
     constructor(

@@ -47,13 +47,7 @@ function pokreniServer(){
 	server.use(express.static("angular/"));
 	
 	pripremiPutanjeAutentifikacija();
-	 pripremiPutanjeTMDB();
-	 pripremiPutanjeFavoriti();
-	 pripremiPutanjeKorisnik();
-	 server.get("*", (zahtjev, odgovor) => {
-		odgovor.sendFile(path.resolve() + "/angular/");
-	});
-
+	
 	// server.all("*", (zahtjev, odgovor, nastavi) => {
 	// 	if(zahtjev.session.korime == null){
 	// 		odgovor.redirect("/prijava");
@@ -61,7 +55,10 @@ function pokreniServer(){
 	// 		nastavi();
 	// 	}
 	// });
-	
+
+	pripremiPutanjeTMDB();
+	pripremiPutanjeFavoriti();
+	pripremiPutanjeKorisnik();
 	// pripremiPutanjeSezone();
 	// pripremiPutanjeDnevnik();
 

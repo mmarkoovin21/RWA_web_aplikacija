@@ -25,8 +25,7 @@ class FavoritiDAO {
 			return null;
 	}
 
-	dodaj = async function (idKorisnika,idSerije) {
-		console.log(korisnik)
+	dodajFavorit = async function (idKorisnika,idSerije) {
 		let sql = `INSERT INTO Favoriti VALUES (${idKorisnika}, ${idSerije})`;
 		await this.baza.izvrsiUpit(sql,[]);
 		return true;

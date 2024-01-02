@@ -13,11 +13,14 @@ exports.getFavoriti = function (zahtjev, odgovor) {
 exports.postFavoriti = function (zahtjev, odgovor) {
 	odgovor.type("application/json");
 	let podaci = zahtjev.body;
+	let korisnik = zahtjev.session.idKorisnika;;
+	let serija = podaci.Serije_idSerije;
 	console.log("POST podaci:");
 	console.log(podaci);
 	let fdao = new FavoritiDAO();
-	fdao.dodaj(podaci).then((poruka) => {
-		odgovor.send(JSON.stringify(poruka));
+	fdao.dodajFavorit(korisnik, serija).then((poruka) => {
+		odgovor.status(201);
+		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
 	});
 };
 exports.putFavoriti = function (zahtjev, odgovor) {

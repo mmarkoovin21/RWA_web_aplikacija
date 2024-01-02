@@ -95,8 +95,8 @@ INSERT INTO Serije(naziv,opis, vanjskaStranica,tmdbId) VALUES("serija3"," ", "ht
 
 INSERT INTO Sezone(naziv,opis,brojSezone, brojEpizoda, tmdbId, Serije_idSerije) VALUES ("neka sezona","neki opis", 1,20, "187236", 1);
 
-INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije)VALUES(1,1);
-INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije) VALUES(4,2);
+INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije)VALUES(5,1);
+INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije) VALUES(5,2);
 
 SELECT * FROM Uloge;
 SELECT * FROM Korisnici;
@@ -108,6 +108,7 @@ UPDATE Korisnici SET uloge_korisnika_id = 1 WHERE korIme="admin";
 
 DELETE From Serije;
 DELETE From Korisnici WHERE korIme="placic";
+DELETE From Favoriti;
 
 SELECT * FROM Serije WHERE idSerije IN (SELECT Serije_idSerije FROM Favoriti WHERE Serije_idSerije=2);
 

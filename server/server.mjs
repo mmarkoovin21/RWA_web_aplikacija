@@ -48,18 +48,18 @@ function pokreniServer(){
 	
 	pripremiPutanjeAutentifikacija();
 	
-	server.all("*", (zahtjev, odgovor, nastavi) => {
-		if(zahtjev.session.korime == null){
-			odgovor.redirect("/prijava");
-		}else{
-			nastavi();
-		}
-	});
+	// server.all("*", (zahtjev, odgovor, nastavi) => {
+	// 	if(zahtjev.session.korime == null){
+	// 		odgovor.redirect("/prijava");
+	// 	}else{
+	// 		nastavi();
+	// 	}
+	// });
 
 	pripremiPutanjeTMDB();
 	pripremiPutanjeFavoriti();
 	pripremiPutanjeKorisnik();
-	// pripremiPutanjeSezone();
+	pripremiPutanjeSezone();
 	// pripremiPutanjeDnevnik();
 
     server.use((zahtjev, odgovor) => {
@@ -101,7 +101,7 @@ function pripremiPutanjeFavoriti(){
 }
 function pripremiPutanjeSezone(){
 	server.get("/baza/sezone/:id", restSezone.getSezone);
-	// server.post("/baza/sezone/:id", restSezone.);  još nije izrealizirano
+	// server.post("/baza/sezone/:id", restSezone.postSezone);
 }
 function pripremiPutanjeDnevnik(){
 

@@ -6,10 +6,10 @@ class FavoritiDAO {
 		this.baza = new Baza("./RWA2023mmarkovin21.sqlite");
 	}
 
-	dajSve = async function () {
+	dajSve = async function (idKorisnika) {
 		this.baza.spojiSeNaBazu();
-		let sql = "SELECT * FROM Serije WHERE idSerije IN (SELECT Serije_idSerije FROM Favoriti)"
-		var podaci = await this.baza.izvrsiUpit(sql, []);
+		let sql = "SELECT * FROM Serije WHERE idSerije IN (SELECT Serije_idSerije FROM Favoriti WHERE Korisnici_idKorisnika = ?)"
+		var podaci = await this.baza.izvrsiUpit(sql, [idKorisnika]);
 		this.baza.zatvoriVezu();
 		return podaci;
 	}

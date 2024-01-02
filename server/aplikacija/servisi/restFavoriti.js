@@ -3,7 +3,8 @@ const FavoritiDAO = require("./favoritiDAO");
 exports.getFavoriti = function (zahtjev, odgovor) {
 	odgovor.type("application/json");
 	let fdao = new FavoritiDAO();
-	fdao.dajSve().then((favoriti) => {
+	let idKorisnika = zahtjev.session.idKorisnika;
+	fdao.dajSve(idKorisnika).then((favoriti) => {
 		console.log(favoriti);
 		odgovor.send(JSON.stringify(favoriti));
 	});

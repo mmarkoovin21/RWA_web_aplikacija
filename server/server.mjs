@@ -121,6 +121,7 @@ function pripremiPutanjeAutentifikacija() {
 	server.get("/odjava",(zahtjev, odgovor)=>{
 		zahtjev.session.korisnik = null;
 		zahtjev.session.korime = null;
+		zahtjev.session.idKorisnika = null;
 		odgovor.status(201);
 		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
 	});

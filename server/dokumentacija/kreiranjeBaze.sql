@@ -97,6 +97,8 @@ INSERT INTO Sezone(naziv,opis,brojSezone, brojEpizoda, tmdbId, Serije_idSerije) 
 
 INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije)VALUES(5,1);
 INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije) VALUES(5,2);
+INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije) VALUES(6,3);
+INSERT INTO Favoriti(Korisnici_idKorisnika,Serije_idSerije) VALUES(6,2);
 
 SELECT * FROM Uloge;
 SELECT * FROM Korisnici;

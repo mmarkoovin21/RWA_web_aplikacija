@@ -123,6 +123,7 @@ exports.postKorisnikPrijava = function (zahtjev, odgovor) {
 				zahtjev.session.korisnik = korisnik.ime + " " + korisnik.prezime;
 				console.log(korisnik);
 				zahtjev.session.korime = korisnik.korIme;
+				zahtjev.session.idKorisnika = korisnik.idKorisnika;
 
 				odgovor.status(201);
 				odgovor.send(JSON.stringify({ opis: "izvrseno" }));

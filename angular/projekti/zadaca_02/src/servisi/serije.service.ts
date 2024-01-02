@@ -36,6 +36,7 @@ export class SerijeService {
         overview: s.overview,
         popularity: s.popularity,
         poster_path: s.poster_path,
+        tmdbId: s.tmdbId,
         seasons: s.seasons
       };
       dohvaceneSerije.push(serija);
@@ -58,6 +59,7 @@ export class SerijeService {
         original_name: dohvacena.original_name,
         overview: dohvacena.overview,
         popularity: dohvacena.popularity,
+        tmdbId: dohvacena.tmdbId,
         poster_path: environment.posteriPutanja + dohvacena.poster_path,
         seasons: dohvacena.seasons
       }

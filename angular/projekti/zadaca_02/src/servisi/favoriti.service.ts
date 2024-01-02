@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { IFavorit } from '../interfaces/IFavoriti';
+import { KorisniciService } from './korisnici.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,9 @@ export class FavoritiService {
   private restServis = environment.restServis;
   private favoriti?: Array<IFavorit>;
 
-  constructor() { }
+  constructor(
+    private korisniciService: KorisniciService
+  ) { }
 
   async dohvatiFavorite(): Promise<Array<IFavorit>>{
     let odgovor = (await fetch(
@@ -59,5 +62,21 @@ export class FavoritiService {
     }
 
     return favorit;
+  }
+  async dodajFavorita(tijelo: string): Promise<boolean>{
+    let token = await this.korisniciService.dajJWT();
+
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+    zaglavlje.set("Authorization", token);
+
+    let odgovorDodaj = await fetch("/baza/favoriti", {
+      method: "POST",
+      headers: zaglavlje,
+      body: tijelo
+    });
+    if(odgovorDodaj.status == 201){
+      return true;
+    }else return false;
   }
 }

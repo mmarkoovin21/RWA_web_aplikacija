@@ -30,15 +30,17 @@ class FavoritiDAO {
 		await this.baza.izvrsiUpit(sql,[]);
 		return true;
 	}
+	dodajSeriju = async function (serija) {
+		let podaci = [serija.naziv, serija.opis, serija.brojSezona, serija.popularnost, serija.putanjaSlike, serija.vanjskaStranica, serija.tmdbId];
+		let sql = `INSERT INTO Serija (naziv, opis, brojSezona, brojEpizoda, popularnost, putanjaSlike, vanjskaStranica, tmdbId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+		await this.baza.izvrsiUpit(sql,[podaci]);
+		return true;
+	}
 
 	obrisi = async function (idSerije) {
 		let sql = "DELETE FROM Favoriti WHERE Serije_idSerije=?";
 		await this.baza.izvrsiUpit(sql,[idSerije]);
 		return true;
-	}
-
-	azuriraj = async function (idSerije, korisnik) {
-		// ovo je zabranjeno, treba vratiti statusni kod 405
 	}
 }
 

@@ -18,6 +18,10 @@ exports.postFavoriti = function (zahtjev, odgovor) {
 	console.log("POST podaci:");
 	console.log(podaci);
 	let fdao = new FavoritiDAO();
+	fdao.dodajSeriju(podaci).then((poruka) => {
+		odgovor.status(201);
+		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
+	});
 	fdao.dodajFavorit(korisnik, serija).then((poruka) => {
 		odgovor.status(201);
 		odgovor.send(JSON.stringify({ opis: "izvrseno" }));

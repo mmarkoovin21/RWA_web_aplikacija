@@ -15,5 +15,6 @@ export interface ISerijaTmdb{
     overview: string;
     popularity: number;
     poster_path: string;
+    tmdbId: number;
     seasons: any;
 }

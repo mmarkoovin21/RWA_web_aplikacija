@@ -12,6 +12,7 @@
     <p id="brojEpizoda" >{{serija?.number_of_episodes}}</p>
     <h3>Popularnost</h3>
     <p id="popularnost" >{{serija?.popularity}}</p>
+    <p id="tmdbID:" >{{serija?.tmdbId}}</p>
     <h4><a id="vanjskaStranica" [href]="serija?.homepage" target="_blank">Poveznica na vanjsku stranicu</a></h4>
-    <button id="dodaj" type="button">Dodaj u favorite</button>
+    <button type="button" (click)="dodajFavorita()">Dodaj u favorite</button>
 </main>

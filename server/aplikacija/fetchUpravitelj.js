@@ -1,11 +1,9 @@
-const SerijePretrazivanje = require("./serijePretrazivanje.js");
 const jwt = require("./moduli/jwt.js");
 const Autentifikacija = require("./autentifikacija.js");
 
 class FetchUpravitelj {
 	constructor(tajniKljucJWT) {
 		this.auth = new Autentifikacija();
-		this.fp = new SerijePretrazivanje();
 		this.tajniKljucJWT = tajniKljucJWT;
 	}
 

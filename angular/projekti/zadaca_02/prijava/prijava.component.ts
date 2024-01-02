@@ -33,7 +33,12 @@ export class PrijavaComponent {
     }
     async jeAdmin(){
         this.korisniciServis.jeAdmin().then((a)=>{
-            if(a) AppComponent.admin = true;
+            if(a){
+                console.log("admin servis "+ a);
+                
+                AppComponent.admin = true;
+            }
+            
         });
     }
 

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { PocetnaComponent } from '../../pocetna/pocetna.component';
 import { DnevnikComponent } from '../../dnevnik/dnevnik.component';
@@ -19,7 +18,7 @@ import { PodnozjeComponent } from '../../komponente/podnozje/podnozje.component'
 import { OdjavaComponent } from '../../komponente/odjava/odjava.component';
 
 export const routes: Routes = [
-  { path: '', component: PrijavaComponent},
+  { path: '', component: PocetnaComponent},
   { path: 'pocetna', component: PocetnaComponent},
   { path: 'dnevnik', component: DnevnikComponent},
   { path: 'dokumentacija', component:  DokumentacijaComponent},

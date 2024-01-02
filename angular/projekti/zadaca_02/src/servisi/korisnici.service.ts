@@ -33,9 +33,10 @@ export class KorisniciService {
   async jeAdmin(): Promise<boolean>{
     let token = await this.dajJWT();
     let k = this.dajTijelo(token).korime;
+    
 
-    if(k = "admin") return true;
-    return false;
+    if(k == "admin") return true;
+    else return false;
   }
 
   async registrirajKorisnika(tijelo: string): Promise<boolean>{

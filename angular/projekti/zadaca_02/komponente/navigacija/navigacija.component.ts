@@ -30,6 +30,7 @@ export class NavigacijaComponent {
         if(o != false){
           AppComponent.prijavljen = false;
           AppComponent.admin = false;
+          
         }
       });
     }

@@ -12,10 +12,11 @@
         
     </div>
     <div id="prijvaOdjava">
-        <a class="nav-link" routerLink="/prijava">Prijava</a>
-        <a class="nav-link" routerLink="/profil" (click)="vratiNaPrijavu()">Profil</a>
         @if (jePrijavljen()) {
+            <a class="nav-link" routerLink="/profil" (click)="vratiNaPrijavu()">Profil</a>
             <a class="nav-link" routerLink="/odjava" (click)="odjavi()">Odjava</a>
+        }@else{
+            <a class="nav-link" routerLink="/prijava">Prijava</a>
         }
         
     </div>

@@ -6,12 +6,13 @@ const portRest = require("/var/www/RWA/2023/portovi.js").mmarkovin21;
 class Autentifikacija {
 	constructor(){
 		this.tajniKljucCaptcha = "";
-
         let konf = new Konfiguracija();
-        konf.ucitajKonfiguraciju().then(() => {
-            this.tajniKljucCaptcha = konf.dajKonf()["tajniKljucCaptcha"];
-        });
 	}
+	async ucitajKljucCaptcha() {
+		let konf = new Konfiguracija();
+		await konf.ucitajKonfiguraciju();
+		this.tajniKljucCaptcha = konf.dajKonf()["tajniKljucCaptcha"];
+	  }
 	async dodajKorisnika(korisnik) {
 		let tijelo = {
 			ime: korisnik.ime,
@@ -94,6 +95,7 @@ class Autentifikacija {
 		}
 	}
 	async provjeriRecaptchu(token){
+		console.log(this.tajniKljucCaptcha);
 		let parametri = {method: 'POST'}
 		let o = await fetch("https://www.google.com/recaptcha/api/siteverify?secret="
 		  + this.tajniKljucCaptcha+"&response="+token,parametri);

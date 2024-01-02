@@ -156,13 +156,15 @@ exports.putKorisnikPrijava = function (zahtjev, odgovor) {
 exports.provjeriReCaptchu = function (zahtjev, odgovor){
 	odgovor.type("application/json");
 	let out = new Autentifikacija();
-	out.provjeriRecaptchu(zahtjev.body.token).then((provjera)=>{
-		if(provjera){
-			odgovor.status(201);
-			odgovor.send(JSON.stringify({ opis:"izvrseno" }));
-		}else{
-			odgovor.status(401);
-			odgovor.send(JSON.stringify({ opis:"neispravna provjera!" }));
-		}
-	});
+    out.ucitajKljucCaptcha().then(() => {
+        out.provjeriRecaptchu(zahtjev.body.token).then((provjera)=>{
+            if(provjera){
+                odgovor.status(201);
+                odgovor.send(JSON.stringify({ opis:"izvrseno" }));
+            }else{
+                odgovor.status(401);
+                odgovor.send(JSON.stringify({ opis:"neispravna provjera!" }));
+            }
+        });
+    });
 }

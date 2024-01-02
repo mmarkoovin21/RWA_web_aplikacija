@@ -136,3 +136,6 @@ function pripremiPutanjeAutentifikacija() {
 		restKorisnik.postKorisnikPrijava
 	);
 }
+function provjeriReCaptchu(){
+	server.post("/recaptcha", restKorisnik.provjeriReCaptchu);
+}

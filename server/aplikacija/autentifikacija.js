@@ -1,8 +1,17 @@
 const mail = require("./moduli/mail.js");
 const kodovi = require("./moduli/kodovi.js");
+const Konfiguracija = require("../konfiguracija.js");
 const portRest = require("/var/www/RWA/2023/portovi.js").mmarkovin21;
 
 class Autentifikacija {
+	constructor(){
+		this.tajniKljucCaptcha = "";
+
+        let konf = new Konfiguracija();
+        konf.ucitajKonfiguraciju().then(() => {
+            this.tajniKljucCaptcha = konf.dajKonf()["tajniKljucCaptcha"];
+        });
+	}
 	async dodajKorisnika(korisnik) {
 		let tijelo = {
 			ime: korisnik.ime,
@@ -84,6 +93,16 @@ class Autentifikacija {
 			return false;
 		}
 	}
+	async provjeriRecaptchu(token){
+		let parametri = {method: 'POST'}
+		let o = await fetch("https://www.google.com/recaptcha/api/siteverify?secret="
+		  + this.tajniKljucCaptcha+"&response="+token,parametri);
+		let recaptchaStatus = JSON.parse(await o.text());
+		console.log(recaptchaStatus);
+		if(recaptchaStatus.success && recaptchaStatus.score > 0.5)
+		  return true;
+		return false;
+	  }
 }
 
 module.exports = Autentifikacija;

@@ -16,6 +16,8 @@ import { AppComponent } from './app.component';
 import { NavigacijaComponent } from '../../komponente/navigacija/navigacija.component';
 import { PodnozjeComponent } from '../../komponente/podnozje/podnozje.component';
 import { OdjavaComponent } from '../../komponente/odjava/odjava.component';
+import { RECAPTCHA_LOADER_OPTIONS, RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { environment } from '../environments/environment';
 
 export const routes: Routes = [
   { path: '', component: PocetnaComponent},
@@ -52,9 +54,24 @@ export const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule,
+    RecaptchaV3Module,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.siteKeyCaptcha
+    },
+    {
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useValue: {
+          onBeforeLoad(url: URL) {
+            url.searchParams.set("hl", "hr");
+            return { url };
+          },
+      },
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

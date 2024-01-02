@@ -19,7 +19,7 @@
         </tbody>
     </table>
     <div id="poruka">#poruka#</div>
-    <form action="#" method="POST" id="formaPrijava">
+    <form method="POST" id="formaPrijava" (ngSubmit)="prijava()">
         <label for="korime">Korisničko ime</label>
         <input name="korime" type="text" id="korime" [(ngModel)]="korime">
         <br>
@@ -29,7 +29,7 @@
         <label for="totp">TOTP:</label>
         <input name="totp" id="totp" type="text">
         <br>
-        <button type="button" (click)="prijavi()">Prijava</button>
+        <button type="submit">Prijava</button>
         <br>
         <button type="button">Prijavi se pomoću GitHuba</button>
     </form>

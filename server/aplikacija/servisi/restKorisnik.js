@@ -2,6 +2,7 @@ const KorisnikDAO = require("./korisnikDAO.js");
 const Konfiguracija = require("../../konfiguracija.js");
 const kodovi = require("../moduli/kodovi.js");
 const jwt = require("../moduli/jwt.js");
+const Autentifikacija = require("../autentifikacija.js");
 
 exports.getKorisnici = function (zahtjev, odgovor) {
 	odgovor.type("application/json");
@@ -151,3 +152,17 @@ exports.putKorisnikPrijava = function (zahtjev, odgovor) {
 	let poruka = { opis: "metoda nije implementirana" };
 	odgovor.send(JSON.stringify(poruka));
 };
+
+exports.provjeriReCaptchu = function (zahtjev, odgovor){
+	odgovor.type("application/json");
+	let out = new Autentifikacija();
+	out.provjeriRecaptchu(zahtjev.body.token).then((provjera)=>{
+		if(provjera){
+			odgovor.status(201);
+			odgovor.send(JSON.stringify({ opis:"izvrseno" }));
+		}else{
+			odgovor.status(401);
+			odgovor.send(JSON.stringify({ opis:"neispravna provjera!" }));
+		}
+	});
+}

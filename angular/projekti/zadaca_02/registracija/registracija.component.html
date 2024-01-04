@@ -2,7 +2,7 @@
     <h1>Registracija</h1>
 </header>
 <main>
-    <div id="poruka">#poruka#</div>
+    @if(obaveznoEmail || obaveznoKorime || obaveznoLozinka){<div id="poruka">{{poruka}}</div>}
     <form method="POST" id="formaRegistracija" (ngSubmit)="registriraj()">
         <label for="ime">Ime</label>
         <input type="text" name="ime" id="ime" [(ngModel)]="ime">
@@ -14,24 +14,24 @@
         <input type="text" name="adresa" id="adresa" [(ngModel)]="adresa">
         <br>
         <div>
-            <input type="radio" name="spol" id="musko" value="Muško" [(ngModel)]="spol">
             <label class="radio" for="musko">Muško</label>
-            <input type="radio" name="spol" id="zensko" value="Žensko" [(ngModel)]="spol">
+            <input type="radio" name="spol" id="musko" value="Muško" [(ngModel)]="spol">
             <label class="radio" for="zensko">Žensko</label>
+            <input type="radio" name="spol" id="zensko" value="Žensko" [(ngModel)]="spol">
         </div>
         <br>
         <label for="zvanje">Zvanje</label>
         <input type="text" name="zvanje" id="zvanje" [(ngModel)]="zvanje">
         <br>
-        <label class="obavezno" for="lozinka">Obavezno</label>
+        @if(obaveznoLozinka){<label class="obavezno" for="lozinka">Obavezno</label>}
         <label for="lozinka">Lozinka</label>
         <input type="password" name="lozinka" id="lozinka" [(ngModel)]="lozinka">
         <br>
-        <label class="obavezno" for="email">Obavezno</label>
+        @if(obaveznoEmail){<label class="obavezno" for="email">Obavezno</label>}
         <label for="email">email</label>
         <input type="email" name="email" id="email" [(ngModel)]="email">
         <br>
-        <label class="obavezno" for="korime">Obavezno</label>
+        @if(obaveznoKorime){<label class="obavezno" for="korime">Obavezno</label>}
         <label for="korime">Korisničko ime</label>
         <input type="text" name="korime" id="korime" [(ngModel)]="korime">
         <br>

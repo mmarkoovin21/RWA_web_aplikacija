@@ -38,6 +38,15 @@ p{
     text-align: center;
 }
 /*********FORME**********/
+#poruka {
+    background-color: #ff3407;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto 15px;
+    width: 40%;
+    text-align: center;
+  }
 form {
     width: 22rem;
     margin: 20px auto 0;
@@ -46,6 +55,16 @@ form {
         display: block;
         margin-bottom: 5px;
         width: 20rem;
+    }
+      
+    label.obavezno {
+        font-weight: bold; 
+        color: #dc3545; 
+        margin-right: 5px;
+    }
+    input[type="radio"], .radio{
+        width: 20%;
+        display: inline-block;
     }
 
     input,

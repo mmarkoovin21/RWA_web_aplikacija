@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KorisniciService } from '../src/servisi/korisnici.service';
 import { IKoriskik } from '../src/interfaces/IKorisnici';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
     selector: 'app-profil',
@@ -20,7 +21,8 @@ export class ProfilComponent implements OnInit{
     korime: string = '';
 
     constructor(
-        private korisnikServis: KorisniciService
+        private korisnikServis: KorisniciService,
+        private reChaptcha: ReCaptchaV3Service
     ){}
     ngOnInit(): void {
         this.osvjeziVrijednosti();
@@ -49,37 +51,50 @@ export class ProfilComponent implements OnInit{
         this.promjeni = false;
     }
     async azurirajPodatke() {
-        if(this.lozinka == ''){
-            this.tijelo = {
-                ime: this.ime,
-                prezime: this.prezime,
-                adresa: this.adresa,
-                spol: this.spol,
-                zvanje: this.zvanje
+        this.reChaptcha.execute('profil').subscribe(async (token: string) => {
+            let zaglavlje = new Headers();
+            zaglavlje.set("Content-Type", "application/json");
+
+            let odgovor = await fetch("/recaptcha", {
+                method: "POST",
+                headers: zaglavlje,
+                body: JSON.stringify({token: token})
+            });
+
+            if (odgovor.status == 201) {
+                if(this.lozinka == ''){
+                    this.tijelo = {
+                        ime: this.ime,
+                        prezime: this.prezime,
+                        adresa: this.adresa,
+                        spol: this.spol,
+                        zvanje: this.zvanje
+                    }
+                    
+                }else{
+                    this.tijelo = {
+                        ime: this.ime,
+                        prezime: this.prezime,
+                        adresa: this.adresa,
+                        spol: this.spol,
+                        zvanje: this.zvanje,
+                        lozinka: this.lozinka
+                    }
+                }
+                console.log(this.tijelo);
+                
+                let t = JSON.stringify(this.tijelo);
+                
+                let azuriran = await this.korisnikServis.azurirajKorisnika(t);
+                if(azuriran){
+                    this.osvjeziVrijednosti();
+                    this.makni();
+                    this.lozinka = '';
+                }else{
+                    console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
+                    
+                }
             }
-            
-        }else{
-            this.tijelo = {
-                ime: this.ime,
-                prezime: this.prezime,
-                adresa: this.adresa,
-                spol: this.spol,
-                zvanje: this.zvanje,
-                lozinka: this.lozinka
-            }
-        }
-        console.log(this.tijelo);
-        
-        let t = JSON.stringify(this.tijelo);
-        
-        let azuriran = await this.korisnikServis.azurirajKorisnika(t);
-        if(azuriran){
-            this.osvjeziVrijednosti();
-            this.makni();
-            this.lozinka = '';
-        }else{
-            console.log("Došlo je do pogreške! Podaci nisu ažurirani!");
-            
-        }
+        });
     }
 }

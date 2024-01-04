@@ -32,7 +32,7 @@
         }
         @if(promjeni){
             <div>
-            <form action="#" method="post" id="formaProfil">
+            <form  method="post" id="formaProfil" (ngSubmit)="azurirajPodatke()">
                 <input type="text" name="ime" id="imeUnos" placeholder="Ime" [(ngModel)]="ime"><br>
                 <input type="text" name="prezime" id="prezimeUnos" placeholder="Prezime" [(ngModel)]="prezime"><br>
                 <input type="text" name="adresa" id="adresaUnos" placeholder="Adresa" [(ngModel)]="adresa"><br>
@@ -44,7 +44,7 @@
                 </div>
                 <input type="text" name="zvanje" id="zvanjeUnos" placeholder="Zvanje" [(ngModel)]="zvanje"><br>
                 <input type="text" name="lozinka" id="lozinkaUnos" placeholder="Lozinka" [(ngModel)]="lozinka"><br>
-                <button type="button" (click)="azurirajPodatke()">Ažuriraj podatke</button>
+                <button type="submit">Ažuriraj podatke</button>
                 <button type="button" (click)="odustani()">Odustani</button>
             </form>
         </div>

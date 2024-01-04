@@ -2,17 +2,17 @@
     <h1>Detalji o seriji</h1>
 </header>
 <main>
-    <img id="poster" class="poster" [src]="serija?.poster_path" alt="Poster serije">
-    <h1 id="nazivSerije">{{serija?.name}}</h1>
+    <img class="poster" [src]="serija?.poster_path" alt="Poster serije">
+    <h1 class="naslovSerije">{{serija?.name}}</h1>
     <h3>Opis serije</h3>
-    <p id="opsiSerije">{{serija?.overview}}</p>
+    <p>{{serija?.overview}}</p>
     <h3>Broj sezona</h3>
-    <p id="brojSezona" >{{serija?.number_of_seasons}}</p>
+    <p>{{serija?.number_of_seasons}}</p>
     <h3>Broj epizoda</h3>
-    <p id="brojEpizoda" >{{serija?.number_of_episodes}}</p>
+    <p>{{serija?.number_of_episodes}}</p>
     <h3>Popularnost</h3>
-    <p id="popularnost" >{{serija?.popularity}}</p>
-    <p id="tmdbID:" >{{serija?.tmdbId}}</p>
-    <h4><a id="vanjskaStranica" [href]="serija?.homepage" target="_blank">Poveznica na vanjsku stranicu</a></h4>
+    <p>{{serija?.popularity}}</p>
+    <p>{{serija?.tmdbId}}</p>
+    <h4><a [href]="serija?.homepage" target="_blank">Poveznica na vanjsku stranicu</a></h4>
     <button type="button" (click)="dodajFavorita()">Dodaj u favorite</button>
 </main>

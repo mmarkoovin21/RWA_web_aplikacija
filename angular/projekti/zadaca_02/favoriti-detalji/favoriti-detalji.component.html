@@ -2,20 +2,19 @@
     <h1>Detalji o favoritu</h1>
 </header>
 <main>
-    <div id="poruka">#poruka#</div><br>
-    <img id="poster" class="poster" [src]="favorit?.putanjaSlike" alt="Poster serije">
-    <h1 id="nazivSerije">Naziv serije</h1>
+    <img class="poster" [src]="favorit?.putanjaSlike" alt="Poster serije">
+    <h1 clsass="naslovSerije">Naziv serije</h1>
     <h3>{{favorit?.naziv}}</h3>
-    <p id="opisSerije">{{favorit?.opis}}</p>
+    <p>{{favorit?.opis}}</p>
     <h3>Broj sezona</h3>
-    <p id="brojSezona" >{{favorit?.brojSezona}}</p>
+    <p >{{favorit?.brojSezona}}</p>
     <h3>Broj epizoda</h3>
-    <p id="brojEpizoda" >{{favorit?.brojEpizoda}}</p>
+    <p >{{favorit?.brojEpizoda}}</p>
     <h3>Popularnost</h3>
-    <p id="popularnost" >{{favorit?.popularnost}}</p>
-    <h4><a id="vanjskaStranica" [href]="favorit?.vanjskaStranica" target="_blank">Poveznica na vanjsku stranicu</a></h4>
+    <p >{{favorit?.popularnost}}</p>
+    <h4><a [href]="favorit?.vanjskaStranica" target="_blank">Poveznica na vanjsku stranicu</a></h4>
 
-    <h1>Sezone</h1>
+    <h1 clsass="naslovSerije">Sezone</h1>
     <div id="stranicenje"></div>
     <div id="sadrzaj"></div>
 

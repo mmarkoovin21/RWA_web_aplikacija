@@ -32,6 +32,7 @@
         }
         @if(promjeni){
             <div>
+                @if(provjeraLozinka){<div id="poruka">{{poruka}}</div>}
             <form  method="post" id="formaProfil" (ngSubmit)="azurirajPodatke()">
                 <input type="text" name="ime" id="imeUnos" placeholder="Ime" [(ngModel)]="ime"><br>
                 <input type="text" name="prezime" id="prezimeUnos" placeholder="Prezime" [(ngModel)]="prezime"><br>
@@ -43,6 +44,7 @@
                     <input type="radio" name="spol" id="zenskoUnos" value="Žensko" [(ngModel)]="spol"><br>
                 </div>
                 <input type="text" name="zvanje" id="zvanjeUnos" placeholder="Zvanje" [(ngModel)]="zvanje"><br>
+                @if(provjeraLozinka){<label class="obavezno" for="lozinka">Neispravno</label>}
                 <input type="text" name="lozinka" id="lozinkaUnos" placeholder="Lozinka" [(ngModel)]="lozinka"><br>
                 <button type="submit">Ažuriraj podatke</button>
                 <button type="button" (click)="odustani()">Odustani</button>

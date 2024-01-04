@@ -10,6 +10,8 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
 })
 export class ProfilComponent implements OnInit{
     korisnik?: IKoriskik;
+    poruka: string = '';
+    provjeraLozinka: boolean = false;
     tijelo?: any;
     promjeni: boolean = false;
     ime: string = '';
@@ -26,6 +28,13 @@ export class ProfilComponent implements OnInit{
     ){}
     ngOnInit(): void {
         this.osvjeziVrijednosti();
+    }
+    provjeriLozinku(){
+        const lozinkaRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        if (!lozinkaRegex.test(this.lozinka)) {
+            this.poruka += "Lozinka u sebi mora sadržavati jedan poseban znak, broj i minimalno 8 znakova!\n";
+            this.provjeraLozinka = true;
+        }
     }
     osvjeziVrijednosti(){
         this.korisnikServis.dohvatiKorisnika().then((k)=>{
@@ -51,6 +60,7 @@ export class ProfilComponent implements OnInit{
         this.promjeni = false;
     }
     async azurirajPodatke() {
+        this.provjeraLozinka = false;
         this.reChaptcha.execute('profil').subscribe(async (token: string) => {
             let zaglavlje = new Headers();
             zaglavlje.set("Content-Type", "application/json");
@@ -72,6 +82,8 @@ export class ProfilComponent implements OnInit{
                     }
                     
                 }else{
+                    this.provjeriLozinku();
+                    if(this.provjeraLozinka) return;
                     this.tijelo = {
                         ime: this.ime,
                         prezime: this.prezime,

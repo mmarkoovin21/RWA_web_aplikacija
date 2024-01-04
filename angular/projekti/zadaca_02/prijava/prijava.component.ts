@@ -12,6 +12,8 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
 export class PrijavaComponent {
     korime: string = '';
     lozinka: string = '';
+    podaciIspravni: boolean = false;
+    poruka: string = '';
 
     constructor(
         private router : Router,
@@ -20,6 +22,7 @@ export class PrijavaComponent {
     ){}
 
     async prijava() {
+        this.podaciIspravni = false;
         this.reChaptcha.execute('prijava').subscribe(async (token: string) => {
             let zaglavlje = new Headers();
             zaglavlje.set("Content-Type", "application/json");
@@ -41,7 +44,8 @@ export class PrijavaComponent {
                     this.jeAdmin();
                     this.router.navigate(["pocetna"]);
                 }else{
-                    console.log("Došlo je do pogreške! Korisnik nije prijavljen!");
+                    this.poruka = "Neispravni korisnički podaci!";
+                    this.podaciIspravni=true;
                 }
             }
         });

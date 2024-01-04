@@ -2,6 +2,7 @@
     <h1>Prijava</h1>
 </header>
 <main>
+    @if(podaciIspravni){<div id="poruka">{{poruka}}</div>}
     <table>
         <tbody>
             <tr>
@@ -18,7 +19,6 @@
             </tr>
         </tbody>
     </table>
-    <div id="poruka">#poruka#</div>
     <form method="POST" id="formaPrijava" (ngSubmit)="prijava()">
         <label for="korime">Korisničko ime</label>
         <input name="korime" type="text" id="korime" [(ngModel)]="korime">

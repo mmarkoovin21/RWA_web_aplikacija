@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { environment } from '../src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KorisniciService } from '../src/servisi/korisnici.service';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
     selector: 'app-registracija',
@@ -22,32 +23,41 @@ export class RegistracijaComponent {
     korime: string = '';
     constructor(
         private router : Router,
-        private korisniciServis: KorisniciService
+        private korisniciServis: KorisniciService,
+        private reChaptcha: ReCaptchaV3Service
     ){
 }
 
     async registriraj() {
-        if(this.musko != ''){
-            this.spol = this.musko;
-        }else if(this.zensko != ''){
-            this.spol = this.zensko;
-        }
-        let tijelo = {
-            ime: this.ime,
-            prezime: this.prezime,
-            adresa: this.adresa,
-            spol: this.spol,
-            zvanje: this.zvanje,
-            lozinka: this.lozinka,
-            email: this.email,
-            korime: this.korime
-        }
-        let t = JSON.stringify(tijelo);
-        let registracija =  await this.korisniciServis.registrirajKorisnika(t);
-        if(registracija){
-            this.router.navigate(["pocetna"]);
-        }else{
-            console.log("Došlo je do pogreške! Korisnik nije registriran!");
-        }
+        this.reChaptcha.execute('registracija').subscribe(async (token: string) => {
+            let zaglavlje = new Headers();
+            zaglavlje.set("Content-Type", "application/json");
+
+            let odgovor = await fetch("/recaptcha", {
+                method: "POST",
+                headers: zaglavlje,
+                body: JSON.stringify({token: token})
+            });
+
+            if (odgovor.status == 201) {
+                let tijelo = {
+                    ime: this.ime,
+                    prezime: this.prezime,
+                    adresa: this.adresa,
+                    spol: this.spol,
+                    zvanje: this.zvanje,
+                    lozinka: this.lozinka,
+                    email: this.email,
+                    korime: this.korime
+                }
+                let t = JSON.stringify(tijelo);
+                let registracija =  await this.korisniciServis.registrirajKorisnika(t);
+                if(registracija){
+                    this.router.navigate(["pocetna"]);
+                }else{
+                    console.log("Došlo je do pogreške! Korisnik nije registriran!");
+                }
+            }
+        });
     }
 }

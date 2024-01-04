@@ -3,7 +3,7 @@
 </header>
 <main>
     <div id="poruka">#poruka#</div>
-    <form action="#" method="POST" id="formaRegistracija">
+    <form method="POST" id="formaRegistracija" (ngSubmit)="registriraj()">
         <label for="ime">Ime</label>
         <input type="text" name="ime" id="ime" [(ngModel)]="ime">
         <br>
@@ -14,9 +14,9 @@
         <input type="text" name="adresa" id="adresa" [(ngModel)]="adresa">
         <br>
         <div>
-            <input type="radio" name="spol" id="musko" value="Muško" [(ngModel)]="musko">
+            <input type="radio" name="spol" id="musko" value="Muško" [(ngModel)]="spol">
             <label class="radio" for="musko">Muško</label>
-            <input type="radio" name="spol" id="zensko" value="Žensko" [(ngModel)]="zensko">
+            <input type="radio" name="spol" id="zensko" value="Žensko" [(ngModel)]="spol">
             <label class="radio" for="zensko">Žensko</label>
         </div>
         <br>
@@ -35,6 +35,6 @@
         <label for="korime">Korisničko ime</label>
         <input type="text" name="korime" id="korime" [(ngModel)]="korime">
         <br>
-        <button type="button" (click)="registriraj()" >Registracija</button>
+        <button type="submit">Registracija</button>
     </form>
 </main>

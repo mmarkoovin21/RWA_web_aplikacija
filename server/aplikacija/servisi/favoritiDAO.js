@@ -31,9 +31,9 @@ class FavoritiDAO {
 		return true;
 	}
 	dodajSeriju = async function (serija) {
-		let podaci = [serija.naziv, serija.opis, serija.brojSezona, serija.popularnost, serija.putanjaSlike, serija.vanjskaStranica, serija.tmdbId];
-		let sql = `INSERT INTO Serija (naziv, opis, brojSezona, brojEpizoda, popularnost, putanjaSlike, vanjskaStranica, tmdbId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-		await this.baza.izvrsiUpit(sql,[podaci]);
+		let podaci = [serija.naziv, serija.opis, serija.brojSezona, serija.brojEpizoda, serija.popularnost, serija.putanjaSlike, serija.vanjskaStranica, serija.tmdbId];
+		let sql = `INSERT INTO Serije (naziv, opis, brojSezona, brojEpizoda, popularnost, putanjaSlike, vanjskaStranica, tmdbId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+		await this.baza.izvrsiUpit(sql,podaci);
 		return true;
 	}
 

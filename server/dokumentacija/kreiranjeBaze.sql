@@ -12,14 +12,14 @@ CREATE TABLE "Uloge"(
 );
 CREATE TABLE "Serije"(
   "idSerije" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "naziv" VARCHAR(45) NOT NULL,
-  "opis" TEXT NOT NULL,
+  "naziv" VARCHAR(45),
+  "opis" TEXT,
   "brojSezona" INTEGER,
   "brojEpizoda" INTEGER,
   "popularnost" VARCHAR(45),
   "putanjaSlike" VARCHAR(100),
-  "vanjskaStranica" VARCHAR(100) NOT NULL,
-  "tmdbId" VARCHAR(100) NOT NULL
+  "vanjskaStranica" VARCHAR(100),
+  "tmdbId" VARCHAR(100)
 );
 CREATE TABLE "Sezone"(
   "idSezone" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -109,10 +109,12 @@ SELECT * FROM Sezone;
 UPDATE Korisnici SET uloge_korisnika_id = 1 WHERE korIme="admin";
 
 DELETE From Serije;
+DROP TABLE Serije;
 DELETE From Korisnici WHERE korIme="placic";
 DELETE From Favoriti;
 
 SELECT * FROM Serije WHERE idSerije IN (SELECT Serije_idSerije FROM Favoriti WHERE Serije_idSerije=2);
+DELETE FROM Serije WHERE idSerije=4;
 
 SELECT name FROM sqlite_master WHERE type='table';
 

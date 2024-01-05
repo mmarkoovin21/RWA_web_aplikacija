@@ -28,7 +28,6 @@ export class SerijaDetaljiComponent{
     }
     async dodajFavorita() {
         let tijelo = {
-            idSerije: this.serija?.id,
             naziv: this.serija?.name,
             opis: this.serija?.overview,
             brojSezona: this.serija?.number_of_seasons,
@@ -36,8 +35,9 @@ export class SerijaDetaljiComponent{
             popularnost: this.serija?.popularity,
             putanjaSlike: this.serija?.poster_path,
             vanjskaStranica: this.serija?.homepage,
-            tmdbId: this.serija?.tmdbId
+            tmdbId: this.serija?.id
         }
+        
         let t = JSON.stringify(tijelo);
         let dodan =  await this.favoritiServis.dodajFavorita(t);
 

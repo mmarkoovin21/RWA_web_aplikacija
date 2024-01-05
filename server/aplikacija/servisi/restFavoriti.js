@@ -22,10 +22,10 @@ exports.postFavoriti = function (zahtjev, odgovor) {
 		odgovor.status(201);
 		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
 	});
-	fdao.dodajFavorit(korisnik, serija).then((poruka) => {
-		odgovor.status(201);
-		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
-	});
+	// fdao.dodajFavorit(korisnik, serija).then((poruka) => {
+	// 	odgovor.status(201);
+	// 	odgovor.send(JSON.stringify({ opis: "izvrseno" }));
+	// });
 };
 exports.putFavoriti = function (zahtjev, odgovor) {
 	odgovor.type("application/json");

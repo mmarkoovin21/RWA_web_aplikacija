@@ -19,7 +19,7 @@ CREATE TABLE "Serije"(
   "popularnost" VARCHAR(45),
   "putanjaSlike" VARCHAR(100),
   "vanjskaStranica" VARCHAR(100),
-  "tmdbId" VARCHAR(100)
+  "tmdbId" VARCHAR(100) UNIQUE
 );
 CREATE TABLE "Sezone"(
   "idSezone" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE "Favoriti"(
   PRIMARY KEY("Korisnici_idKorisnika","Serije_idSerije"),
   CONSTRAINT "fk_Korisnici_has_Serije_Korisnici1"
     FOREIGN KEY("Korisnici_idKorisnika")
-    REFERENCES "Korisnici"("idKorisnika"),
+    REFERENCES "Korisnici"("idKorisnika") ON DELETE CASCADE,
   CONSTRAINT "fk_Korisnici_has_Serije_Serije1"
     FOREIGN KEY("Serije_idSerije")
     REFERENCES "Serije"("idSerije")

@@ -17,11 +17,16 @@ exports.postFavoriti = function (zahtjev, odgovor) {
 	console.log("POST podaci:");
 	console.log(podaci);
 	let fdao = new FavoritiDAO();
-	fdao.dodajSeriju(podaci).then((poruka) => {
+	fdao.dodajSeriju(podaci).then((serijaDodana) => {
 		fdao.dajPremaTmdbId(podaci.tmdbId).then((serija)=>{
 			fdao.dodajFavorit(idKorisnik, serija.idSerije).then((poruka) => {
-				odgovor.status(201);
-				odgovor.send(JSON.stringify({ opis: "izvrseno" }));
+				if(poruka){
+					odgovor.status(201);
+					odgovor.send(JSON.stringify({ opis: "favorit dodan" }));
+				}else{
+					odgovor.status(409);
+					odgovor.send(JSON.stringify({ opis: "favorit već postoji" }));
+				}
 			});
 		});
 	});

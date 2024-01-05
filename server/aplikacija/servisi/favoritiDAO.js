@@ -36,14 +36,28 @@ class FavoritiDAO {
 
 	dodajFavorit = async function (idKorisnika,idSerije) {
 		let sql = `INSERT INTO Favoriti(Korisnici_idKorisnika, Serije_idSerije) VALUES (?, ?)`;
-		await this.baza.izvrsiUpit(sql,[idKorisnika, idSerije]);
-		return true;
+		try {
+			await this.baza.izvrsiUpit(sql,[idKorisnika, idSerije]);
+			return true;
+		} catch (error) {
+			if(error.message.includes("UNIQUE constraint failed")){
+				console.log("Favorit već postoji!");
+			}
+			return false;
+		}
 	}
 	dodajSeriju = async function (serija) {
 		let podaci = [serija.naziv, serija.opis, serija.brojSezona, serija.brojEpizoda, serija.popularnost, serija.putanjaSlike, serija.vanjskaStranica, serija.tmdbId];
 		let sql = `INSERT INTO Serije (naziv, opis, brojSezona, brojEpizoda, popularnost, putanjaSlike, vanjskaStranica, tmdbId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-		await this.baza.izvrsiUpit(sql,podaci);
-		return true;
+		try {
+			await this.baza.izvrsiUpit(sql,podaci);
+			return true;
+		} catch (error) {
+			if(error.message.includes("UNIQUE constraint failed")){
+				console.log("Serija već postoji!");
+			}
+			return false;
+		}
 	}
 
 	obrisi = async function (idSerije) {

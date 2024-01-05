@@ -2,13 +2,11 @@ import express from 'express';
 import path from 'path';
 import Konfiguracija from "./konfiguracija.js";
 import FetchUpravitelj from './aplikacija/fetchUpravitelj.js';
-import portovi from "/var/www/RWA/2023/portovi.js";
 import restKorisnik from "./aplikacija/servisi/restKorisnik.js";
 import restDnevnik from "./aplikacija/servisi/restDnevnik.js";
 import restFavoriti from "./aplikacija/servisi/restFavoriti.js";
-import restSezone from "./aplikacija/servisi/restSezone.js"
 import RestTMDB from "./aplikacija/servisi/restTMDB.js";
-const port = portovi.mmarkovin21;
+const port = 12420;
 import kolacici from 'cookie-parser';
 import sesija from 'express-session';
 import cors from 'cors';

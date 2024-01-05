@@ -1,4 +1,5 @@
 const FavoritiDAO = require("./favoritiDAO");
+const SezoneDAO = require("./sezoneDAO");
 
 exports.getFavoriti = function (zahtjev, odgovor) {
 	odgovor.type("application/json");
@@ -28,6 +29,11 @@ exports.postFavoriti = function (zahtjev, odgovor) {
 					odgovor.send(JSON.stringify({ opis: "favorit već postoji" }));
 				}
 			});
+			return serija.idSerije;
+		}).then((idSerije)=>{
+			let sdao = new SezoneDAO();
+			console.log(podaci.sezone);
+			sdao.dodaj(podaci.sezone, idSerije);
 		});
 	});
 };

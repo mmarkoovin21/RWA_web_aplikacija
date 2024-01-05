@@ -16,11 +16,12 @@ class SezoneDAO {
 
 	dodaj = async function (sezone, idSerije) {
 		for (let s of sezone){
-			let podaci = [s.id, s.name, s.overview, s.poster_path, s.season_number, s.episode_count, s.vote_average, idSerije]
-			let sql = `INSERT INTO Sezone (idSezone, naziv, opis, putanjaPostera, brojSezone, brojEpizoda, tmdbId, Serije_idSerije) VALUES (?,?,?,?,?,?,?)`;
-			await this.baza.izvrsiUpit(sql,[podaci]);
-			return true;
+			let podaci = [s.name, s.overview, s.poster_path, s.season_number, s.episode_count, s.id, idSerije]
+			let sql = `INSERT INTO Sezone (naziv, opis, putanjaPostera, brojSezone, brojEpizoda, tmdbId, Serije_idSerije) VALUES (?,?,?,?,?,?,?)`;
+			await this.baza.izvrsiUpit(sql, podaci);
+			console.log("ubacena sezona " + s.season_number);
 		}
+		return true;
 	}
 }
 

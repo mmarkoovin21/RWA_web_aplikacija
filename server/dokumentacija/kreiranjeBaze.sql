@@ -24,11 +24,11 @@ CREATE TABLE "Serije"(
 CREATE TABLE "Sezone"(
   "idSezone" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "naziv" VARCHAR(50),
-  "opis" VARCHAR(50),
+  "opis" TEXT,
   "putanjaPostera" VARCHAR(100),
   "brojSezone" INTEGER,
   "brojEpizoda" INTEGER,
-  "tmdbId" VARCHAR(50) NOT NULL,
+  "tmdbId" INTEGER NOT NULL,
   "Serije_idSerije" INTEGER NOT NULL,
   CONSTRAINT "fk_Sezone_Serije1"
     FOREIGN KEY("Serije_idSerije")
@@ -109,7 +109,7 @@ SELECT * FROM Sezone;
 UPDATE Korisnici SET uloge_korisnika_id = 1 WHERE korIme="admin";
 
 DELETE From Serije;
-DROP TABLE Serije;
+DROP TABLE Sezone;
 DELETE From Korisnici WHERE korIme="placic";
 DELETE From Favoriti;
 

@@ -36,8 +36,11 @@ export class SerijaDetaljiComponent{
             popularnost: this.serija?.popularity,
             putanjaSlike: this.serija?.poster_path,
             vanjskaStranica: this.serija?.homepage,
-            tmdbId: this.serija?.id
+            tmdbId: this.serija?.id,
+            sezone: this.serija?.seasons
         }
+        console.log(tijelo);
+        
         
         let t = JSON.stringify(tijelo);
         let dodan =  await this.favoritiServis.dodajFavorita(t);

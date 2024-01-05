@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { IFavorit } from '../interfaces/IFavoriti';
+import { IFavorit, ISezona } from '../interfaces/IFavoriti';
 import { KorisniciService } from './korisnici.service';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { KorisniciService } from './korisnici.service';
 export class FavoritiService {
   private restServis = environment.restServis;
   private favoriti?: Array<IFavorit>;
+  private sezone?: Array<ISezona>;
 
   constructor(
     private korisniciService: KorisniciService
@@ -22,8 +23,6 @@ export class FavoritiService {
     
     if(odgovor.status == 200){
       let podaci = JSON.parse(await odgovor.text()) as Array<IFavorit>;
-      console.log(podaci);
-      
       this.favoriti = podaci;
 
     let dohvaceniFavoriti: Array<IFavorit> = [];
@@ -63,6 +62,29 @@ export class FavoritiService {
 
     return favorit;
   }
+
+  async dohvatiSezoneFavorita(id: number): Promise<Array<ISezona>>{
+    let odgovor = (await fetch(this.restServis + "/baza/sezone/" + id)) as Response;
+    if(odgovor.status == 200){
+      let podaci = JSON.parse(await odgovor.text()) as Array<ISezona>;
+      this.sezone = podaci;
+
+      let dohvaceneSezone: Array<ISezona> = [];
+      for(let s of this.sezone!){
+        let sezona: ISezona ={
+          naziv: s.naziv,
+          opis: s.opis,
+          putanjaPostera: s.putanjaPostera,
+          brojSezone: s.brojSezone,
+          brojEpizoda: s.brojEpizoda
+        }
+        dohvaceneSezone.push(sezona);
+      }
+      return dohvaceneSezone;
+    }
+    return [];
+  }
+
   async dodajFavorita(tijelo: string): Promise<boolean>{
     let token = await this.korisniciService.dajJWT();
 

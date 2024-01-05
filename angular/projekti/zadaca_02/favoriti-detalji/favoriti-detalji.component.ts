@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IFavorit } from '../src/interfaces/IFavoriti';
+import { IFavorit, ISezona } from '../src/interfaces/IFavoriti';
 import { ActivatedRoute } from '@angular/router';
 import { FavoritiService } from '../src/servisi/favoriti.service';
+import { environment } from '../src/environments/environment';
 
 @Component({
     selector: 'app-favoriti-detalji',
@@ -10,6 +11,8 @@ import { FavoritiService } from '../src/servisi/favoriti.service';
 })
 export class FavoritiDetaljiComponent {
     favorit?: IFavorit;
+    sezone?: Array<ISezona>;
+    putanja = environment.posteriPutanja;
     constructor (
         private favoritiServis: FavoritiService,
         private aktivnaRuta: ActivatedRoute,
@@ -19,6 +22,9 @@ export class FavoritiDetaljiComponent {
         if (idFavorita != null) {
             favoritiServis.dohvatiFavorita(parseInt(idFavorita)).then((favorit) => {
                 this.favorit = favorit;
+            });
+            favoritiServis.dohvatiSezoneFavorita(parseInt(idFavorita)).then((s) => {
+                this.sezone = s;
             });
           }
         });

@@ -39,8 +39,6 @@ export class SerijaDetaljiComponent{
             tmdbId: this.serija?.id,
             sezone: this.serija?.seasons
         }
-        console.log(tijelo);
-        
         
         let t = JSON.stringify(tijelo);
         let dodan =  await this.favoritiServis.dodajFavorita(t);

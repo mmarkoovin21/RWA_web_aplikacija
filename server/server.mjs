@@ -102,8 +102,7 @@ function pripremiPutanjeFavoriti(){
 
 }
 function pripremiPutanjeSezone(){
-	server.get("/baza/sezone/:id", restSezone.getSezone);
-	// server.post("/baza/sezone/:id", restSezone.postSezone);
+	server.get("/baza/sezone/:id", restFavoriti.getFavoritSezone);
 }
 function pripremiPutanjeDnevnik(){
 

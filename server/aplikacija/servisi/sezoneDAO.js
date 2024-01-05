@@ -6,10 +6,10 @@ class SezoneDAO {
 		this.baza = new Baza("./RWA2023mmarkovin21.sqlite");
 	}
 
-	dajSve = async function (idSerije) {
+	dajSveSezone = async function (idFavorita) {
 		this.baza.spojiSeNaBazu();
 		let sql = "SELECT * FROM Sezone WHERE Serije_idSerije=?"
-		var podaci = await this.baza.izvrsiUpit(sql, [idSerije]);
+		var podaci = await this.baza.izvrsiUpit(sql, [idFavorita]);
 		this.baza.zatvoriVezu();
 		return podaci;
 	}

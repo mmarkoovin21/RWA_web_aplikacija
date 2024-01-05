@@ -15,9 +15,21 @@
     <h4><a [href]="favorit?.vanjskaStranica" target="_blank">Poveznica na vanjsku stranicu</a></h4>
 
     <h1 clsass="naslovSerije">Sezone</h1>
-    <div id="stranicenje"></div>
-    <div id="sadrzaj"></div>
-
+    <tr>
+        <th scope='col'>Naziv</th>
+        <th scope='col'>Opis</th>
+        <th scope='col'>Broj epizoda</th>
+        <th scope='col'></th>
+    </tr>
+    @for (s of sezone; track s.naziv) {
+        <tr>
+            <td>{{s.naziv}}</td>
+            <td>{{s.opis}}</td>
+            <td>{{s.brojEpizoda}}</td>
+            <td><img class="posterSezone" [src]="putanja + s.putanjaPostera" alt="poster"></td>
+        </tr>
+    }
+    <br>
     <button>
         Izbriši favorita
     </button>

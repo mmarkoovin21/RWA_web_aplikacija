@@ -6,7 +6,6 @@ exports.getFavoriti = function (zahtjev, odgovor) {
 	let fdao = new FavoritiDAO();
 	let idKorisnika = zahtjev.session.idKorisnika;
 	fdao.dajSve(idKorisnika).then((favoriti) => {
-		console.log(favoriti);
 		odgovor.send(JSON.stringify(favoriti));
 	});
 };
@@ -32,7 +31,6 @@ exports.postFavoriti = function (zahtjev, odgovor) {
 			return serija.idSerije;
 		}).then((idSerije)=>{
 			let sdao = new SezoneDAO();
-			console.log(podaci.sezone);
 			sdao.dodaj(podaci.sezone, idSerije);
 		});
 	});
@@ -56,9 +54,16 @@ exports.getFavorit = function (zahtjev, odgovor) {
 	let kdao = new FavoritiDAO();
 	let favoritId = zahtjev.params.id;
 	kdao.daj(favoritId).then((favorit) => {
-		console.log(favorit);
 		odgovor.send(JSON.stringify(favorit));
-	});
+	})
+};
+exports.getFavoritSezone = function (zahtjev, odgovor) {
+	odgovor.type("application/json");
+	let sdao = new SezoneDAO();
+	let favoritId = zahtjev.params.id;
+	sdao.dajSveSezone(favoritId).then((sezone) => {
+		odgovor.send(JSON.stringify(sezone));
+	})
 };
 
 exports.postFavorit = function (zahtjev, odgovor) {

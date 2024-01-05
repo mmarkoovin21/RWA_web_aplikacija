@@ -105,13 +105,14 @@ SELECT * FROM Korisnici;
 SELECT * FROM Serije;
 SELECT * FROM Favoriti;
 SELECT * FROM Sezone;
+SELECT * FROM Sezone WHERE Serije_idSerije=10;
 
 UPDATE Korisnici SET uloge_korisnika_id = 1 WHERE korIme="admin";
 
 DELETE From Serije;
 DROP TABLE Sezone;
 DELETE From Korisnici WHERE korIme="placic";
-DELETE From Favoriti;
+DELETE From Sezone;
 
 SELECT * FROM Serije WHERE idSerije IN (SELECT Serije_idSerije FROM Favoriti WHERE Serije_idSerije=2);
 DELETE FROM Serije WHERE idSerije=4;

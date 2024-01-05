@@ -9,3 +9,10 @@ export interface IFavorit{
     vanjskaStranica: string;
     tmdbId: number;
 }
+export interface ISezona{
+    naziv: string;
+    opis: string;
+    putanjaPostera: string;
+    brojSezone: number;
+    brojEpizoda: number;
+}

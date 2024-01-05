@@ -26,38 +26,52 @@
             <tbody>
                 <tr>
                     <td>baza/korisnici </td>
-                    <td>Napravljeno<br> Nedostaje administratorsko pravo</td>
-                    <td>Kreira korisnika <br> Nedostaje administratorsko pravo </td>
+                    <td>Napravljeno(vraća sve korisnike 200)</td>
+                    <td>Napravljeno(kreira novog korisnika)</td>
                     <td>Napravljeno(501) </td>
                     <td>Napravljeno(501) </td>
                 </tr>
                 <tr>
                     <td>baza/korisnici/{{ "{korime}" }} </td>
-                    <td>Vraća podatke određenog korisnika</td>
+                    <td>Napravljeno(vraća podatke određenog
+                        korisnika)</td>
                     <td>Napravljeno ("zabranjeno 405")</td>
-                    <td>Napravljeno (ažurira korisnika) </td>
-                    <td>Napravljeno (briše korisnika)</td>
+                    <td>Napravljeno (ažurira korisnika 201) </td>
+                    <td>Napravljeno (briše korisnika 201)</td>
                 </tr>
                 <tr>
                     <td>baza/korisnici/{{ "{korime}" }}/prijava </td>
-                    <td>Napravljeno</td>
-                    <td>Napravljeno</td>
+                    <td>Napravljeno <br> (Vraća JWT token u
+                        zaglavlju ako postoji
+                        sesija 201. <br> Ako ne
+                        postoji sesija javlja
+                        “zabranjen pristup” 401)</td>
+                    <td>Napravljeno(Provjerava podatke
+                        prijave, ako su
+                        ispravni kreira sesiju.
+                        201)</td>
                     <td>Napravljeno(501) </td>
                     <td>Napravljeno(501) </td>
                 </tr>
                 <tr>
                     <td>baza/favoriti </td>
-                    <td> Vraća sve serije<br> Nedostaje prijavljeni korisnik</td>
-                    <td> Dodaje seriju u tablicu favoriti<br> Nedostaje prijavljeni korisnik</td>
+                    <td>Napravljeno(Vraća sve podatke serija
+                        spremljenih u favorite
+                        prijavljenog korisnika 200)</td>
+                    <td>Napravljeno(Dodaje novu seriju u
+                        favorite prijavljenog
+                        korisnika 201)</td>
                     <td>Napravljeno(501) </td>
                     <td>Napravljeno(501) </td>
                 </tr>
                 <tr>
                     <td>baza/favoriti/{{ "{id}" }} </td>
-                    <td>Vraća podatke jedne serije<br> Nedostaje prijavljeni korisnik</td>
+                    <td>Napravljeno(Vraća sve podatke tražene
+                        serije u favoritima
+                        prijavljenog korisnika 201)</td>
                     <td>Napravljeno("zabranjeno 405")</td>
                     <td>Napravljeno("zabranjeno 405") </td>
-                    <td> Briše korisnika <br> Nedostaje prijavljeni korisnik</td>
+                    <td>Napravljeno</td>
                 </tr>
                 <tr>
                     <td>baza/dnevnik </td>
@@ -69,6 +83,7 @@
             </tbody>
         </table>
     </div>
+    <br>
     <div id="tablica3">
         <h2>Tablica 3.</h2>
         <table>
@@ -82,8 +97,15 @@
             <tbody>
                 <tr>
                     <td>Gost/Korisnik</td>
+                    <td>Pocetna</td>
+                    <td>Napravljeno učitavanje serija. <br>
+                        Nema straničenja.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gost/Korisnik</td>
                     <td>SerijaDetalji</td>
-                    <td>Napravljeno <br> Ne radi spremanje favorita u bazu</td>
+                    <td>Napravljeno</td>
                 </tr>
                 <tr>
                     <td>Gost</td>
@@ -93,12 +115,12 @@
                 <tr>
                     <td>Gost</td>
                     <td>Prijava/Odjava</td>
-                    <td></td>
+                    <td>Napravljeno</td>
                 </tr>
                 <tr>
                     <td>Korisnik</td>
                     <td>Profil</td>
-                    <td></td>
+                    <td>Napravljeno</td>
                 </tr>
                 <tr>
                     <td>Korisnik</td>
@@ -114,13 +136,16 @@
                     <td>Admin</td>
                     <td>Registracija</td>
                     <td>
+                    Napravljeno <br>
                     Slanje E-maila i dalje ne funkcionira.
                     </td>
                 </tr>
                 <tr>
                     <td>Admin</td>
                     <td>Korisnici</td>
-                    <td>Napravljeno</td>
+                    <td>Napravljeno <br>
+                        Nije ograničeno brisanje admina
+                    </td>
                 </tr>
                 <tr>
                     <td>Admin</td>
@@ -130,4 +155,5 @@
             </tbody>
         </table>
     </div>
+    <br>
 </main>

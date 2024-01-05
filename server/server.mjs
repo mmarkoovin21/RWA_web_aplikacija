@@ -50,7 +50,7 @@ function pokreniServer(){
 	
 	// server.all("*", (zahtjev, odgovor, nastavi) => {
 	// 	if(zahtjev.session.korime == null){
-	// 		odgovor.redirect("/prijava");
+		// 		odgovor.redirect("/prijava");
 	// 	}else{
 	// 		nastavi();
 	// 	}
@@ -60,7 +60,9 @@ function pokreniServer(){
 	pripremiPutanjeFavoriti();
 	pripremiPutanjeKorisnik();
 	pripremiPutanjeSezone();
-	// pripremiPutanjeDnevnik();
+	server.get("*", (zahtjev, odgovor)=>{
+		odgovor.sendFile(path.resolve() + "/angular/");
+	});
 
     server.use((zahtjev, odgovor) => {
 		odgovor.status(404);

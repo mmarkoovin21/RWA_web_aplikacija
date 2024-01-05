@@ -46,13 +46,14 @@ function pokreniServer(){
 	
 	pripremiPutanjeAutentifikacija();
 	
-	// server.all("*", (zahtjev, odgovor, nastavi) => {
-	// 	if(zahtjev.session.korime == null){
-		// 		odgovor.redirect("/prijava");
-	// 	}else{
-	// 		nastavi();
-	// 	}
-	// });
+	server.all("*", (zahtjev, odgovor, nastavi) => {
+		if(zahtjev.session.korime == null){
+			odgovor.status(401);
+			odgovor.send({opis: "neautorizirani pristup!"});
+		}else{
+			nastavi();
+		}
+	});
 
 	pripremiPutanjeTMDB();
 	pripremiPutanjeFavoriti();

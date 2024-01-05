@@ -101,4 +101,19 @@ export class FavoritiService {
       return true;
     }else return false;
   }
+  async izbrisiFavorit(id: number): Promise<boolean>{
+    let token = await this.korisniciService.dajJWT();
+
+    let zaglavlje = new Headers();
+    zaglavlje.set("Content-Type", "application/json");
+    zaglavlje.set("Authorization", token);
+
+    let odgovorDelete = await fetch("/baza/favoriti/" + id, {
+      method: "DELETE",
+      headers: zaglavlje
+    });
+    if(odgovorDelete.status == 201){
+      return true;
+    }else return false;
+  }
 }

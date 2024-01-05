@@ -24,10 +24,19 @@ class FavoritiDAO {
 		else
 			return null;
 	}
+	dajPremaTmdbId = async function (tmdbId) {
+		this.baza.spojiSeNaBazu();
+		let sql = "SELECT * FROM Serije WHERE tmdbId=?"
+		var podaci = await this.baza.izvrsiUpit(sql, [tmdbId]);
+		if(podaci.length == 1)
+			return podaci[0];
+		else
+			return null;
+	}
 
 	dodajFavorit = async function (idKorisnika,idSerije) {
-		let sql = `INSERT INTO Favoriti VALUES (${idKorisnika}, ${idSerije})`;
-		await this.baza.izvrsiUpit(sql,[]);
+		let sql = `INSERT INTO Favoriti(Korisnici_idKorisnika, Serije_idSerije) VALUES (?, ?)`;
+		await this.baza.izvrsiUpit(sql,[idKorisnika, idSerije]);
 		return true;
 	}
 	dodajSeriju = async function (serija) {

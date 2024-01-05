@@ -12,6 +12,7 @@ import { IFavorit } from '../src/interfaces/IFavoriti';
 })
 export class SerijaDetaljiComponent{
     serija?: ISerijaTmdb;
+    onesposobi: boolean = false;
     constructor (
         private serijeServis: SerijeService,
         private favoritiServis: FavoritiService,
@@ -40,6 +41,7 @@ export class SerijaDetaljiComponent{
         
         let t = JSON.stringify(tijelo);
         let dodan =  await this.favoritiServis.dodajFavorita(t);
+        this.onesposobi = dodan;
 
         if(dodan){
             console.log("Favorit je dodan u bazu!");

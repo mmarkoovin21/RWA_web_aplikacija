@@ -13,19 +13,18 @@ exports.getFavoriti = function (zahtjev, odgovor) {
 exports.postFavoriti = function (zahtjev, odgovor) {
 	odgovor.type("application/json");
 	let podaci = zahtjev.body;
-	let korisnik = zahtjev.session.idKorisnika;;
-	let serija = podaci.Serije_idSerije;
+	let idKorisnik = zahtjev.session.idKorisnika;
 	console.log("POST podaci:");
 	console.log(podaci);
 	let fdao = new FavoritiDAO();
 	fdao.dodajSeriju(podaci).then((poruka) => {
-		odgovor.status(201);
-		odgovor.send(JSON.stringify({ opis: "izvrseno" }));
+		fdao.dajPremaTmdbId(podaci.tmdbId).then((serija)=>{
+			fdao.dodajFavorit(idKorisnik, serija.idSerije).then((poruka) => {
+				odgovor.status(201);
+				odgovor.send(JSON.stringify({ opis: "izvrseno" }));
+			});
+		});
 	});
-	// fdao.dodajFavorit(korisnik, serija).then((poruka) => {
-	// 	odgovor.status(201);
-	// 	odgovor.send(JSON.stringify({ opis: "izvrseno" }));
-	// });
 };
 exports.putFavoriti = function (zahtjev, odgovor) {
 	odgovor.type("application/json");

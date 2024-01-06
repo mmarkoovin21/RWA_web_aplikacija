@@ -61,13 +61,19 @@ exports.deleteKorisnik = function (zahtjev, odgovor) {
 	let korime = zahtjev.params.korime;
 	let kdao = new KorisnikDAO();
 	kdao.obrisi(korime).then((poruka) => {
-		if(poruka){
-			odgovor.status(201);
-			let opis = {"opis":"izvrseno"};
-			odgovor.send(JSON.stringify(opis));
+		if(korime != "admin"){
+			if(poruka){
+				odgovor.status(201);
+				let opis = {"opis":"izvrseno"};
+				odgovor.send(JSON.stringify(opis));
+			}else{
+				odgovor.status(400);
+				let opis = {"opis":"korisnik nije obrisan"};
+				odgovor.send(JSON.stringify(opis));
+			}
 		}else{
-			odgovor.status(400);
-			let opis = {"opis":"korisnik nije obrisan"};
+			odgovor.status(409);
+			let opis = {"opis":"Administrator se ne može obrisati!"};
 			odgovor.send(JSON.stringify(opis));
 		}
 	});

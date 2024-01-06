@@ -27,11 +27,12 @@
                 <td>{{k.korIme}}</td>
                 <td>{{k.lozinka}}</td>
                 <td>{{k.uloge_korisnika_id}}</td>
-                <td><Button type="button" (click)="obrisiKorisnika(k.korIme)">Obriši korisnika</Button></td>
+                @if(k.korIme != "admin"){
+                    <td><Button type="button" (click)="obrisiKorisnika(k.korIme)">Obriši korisnika</Button></td>
+                }@else {
+                    <td><Button type="button" [disabled]="true" (click)="obrisiKorisnika(k.korIme)">Obriši korisnika</Button></td>
+                }
             </tr>
         }
     </table>
-
-    <!-- <div id="stranicenje"></div>
-    <div id="sadrzaj"></div> -->
 </main>

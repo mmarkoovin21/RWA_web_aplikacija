@@ -39,14 +39,16 @@ class KorisnikDAO {
 	}
 
 	obrisi = async function (korime) {
-		let sql = "DELETE FROM Korisnici WHERE korIme=?";
-		try {
-			await this.baza.izvrsiUpit(sql,[korime]);
-			return true;
-		} catch (greska) {
-			console.log(greska);
-			return false;
-		}
+			if(korime != "admin"){
+				let sql = "DELETE FROM Korisnici WHERE korIme=?";
+			try {
+				await this.baza.izvrsiUpit(sql,[korime]);
+				return true;
+			} catch (greska) {
+				console.log(greska);
+				return false;
+			}
+		}else return false;
 	}
 
 	azuriraj = async function (korime, korisnik) {

@@ -48,7 +48,7 @@
             "tsConfig": "projekti/zadaca_02/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projekti/zadaca_02/src/favicon.ico",
+              "projekti/zadaca_02/src/assets/icons8-film-reel-64.png",
               "projekti/zadaca_02/src/assets"
             ],
             "styles": [

@@ -4,10 +4,8 @@
   "description": "zadaca1",
   "main": "server.mjs",
   "scripts": {
-    "pripremi": "npm link --save express sqlite3 express-session cookie-parser jsonwebtoken nodemailer cors",
-    "debug": "nodemon server.mjs mmarkovin21_conf.csv",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.mjs mmarkovin21_conf.csv"
+    "start": "npm link --save express sqlite3 express-session cookie-parser jsonwebtoken nodemailer cors && node server.mjs mmarkovin21_conf.csv"
   },
   "author": "Magdalena Marovinovic",
   "license": "MIT",

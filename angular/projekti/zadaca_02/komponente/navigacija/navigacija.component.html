@@ -1,8 +1,8 @@
 <nav>
     <div>
-        <a class="nav-link" routerLink="/" (click)="vratiNaPrijavu()">Početna</a>
+        <a class="nav-link" routerLink="/">Početna</a>
         <a class="nav-link" routerLink="/favoriti" (click)="vratiNaPrijavu()">Favoriti</a>
-        <a class="nav-link" routerLink="/dokumentacija" (click)="vratiNaPrijavu()">Dokumentacija</a>
+        <a class="nav-link" routerLink="/dokumentacija">Dokumentacija</a>
         @if(jeAdmin()){
             <a class="nav-link" routerLink="/korisnici">Korisnici</a>
             <a class="nav-link" routerLink="/registracija">Registracija</a>

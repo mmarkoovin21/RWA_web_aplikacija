@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
 import { SerijeService } from '../src/servisi/serije.service';
 import { ISerijaTmdb } from '../src/interfaces/ISerijaTmdb';
 import { Router } from '@angular/router';
@@ -9,18 +9,13 @@ import { AppComponent } from '../src/app/app.component';
     templateUrl: './pocetna.component.html',
     styleUrl: './pocetna.component.scss',
 })
-export class PocetnaComponent implements OnInit{
+export class PocetnaComponent{
     serije = new Array<ISerijaTmdb>();
     filter: string  = '';
     constructor(
         private serijeServis: SerijeService,
         private router : Router
     ){}
-    ngOnInit(): void {
-        if(!AppComponent.prijavljen){
-            this.router.navigate(["prijava"]);
-        }
-    }
 
     async filtriraj(): Promise<void>{
         if(this.filter.length >= 3){

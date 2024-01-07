@@ -1,7 +1,7 @@
 const mail = require("./moduli/mail.js");
 const kodovi = require("./moduli/kodovi.js");
 const Konfiguracija = require("../konfiguracija.js");
-const portRest = require("/var/www/RWA/2023/portovi.js").mmarkovin21;
+const portRest = 12420;
 
 class Autentifikacija {
 	constructor(){
